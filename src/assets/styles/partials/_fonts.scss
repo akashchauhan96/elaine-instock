@@ -1,0 +1,80 @@
+@use './breakpoints' as *;
+@use './mixins' as *;
+@use './colours' as *;
+
+// this is the regular (not bold) font - weight 400
+@font-face {
+    font-family: 'Trillium';
+    src: url(../../fonts/TitilliumWeb-Regular.woff2) format('woff2');
+    src: url(../../fonts/TitilliumWeb-Regular.woff) format('woff'); /*just in case woff2 isn't compatible*/
+    font-weight: 400;
+}
+
+// this is the bold font - weight 600
+@font-face {
+    font-family: 'Trillium';
+    src: url(../../fonts/TitilliumWeb-SemiBold.woff2) format('woff2');
+    src: url(../../fonts/TitilliumWeb-SemiBold.woff) format('woff'); /*just in case woff2 isn't compatible*/
+    font-weight: 600;
+}
+
+// page header
+h1 {
+    font-size: 1.75rem;
+    line-height: 2.25rem;
+    font-weight: 600;
+
+        @include tablet {
+            font-size: 2rem;
+            line-height: 2.3rem;
+        }
+}
+
+// subheader
+h2 {
+    font-size: 1.25rem;
+    line-height: 1.75rem;
+    font-weight: 600;
+
+        @include tablet {
+            font-size: 1.5rem;
+            line-height: 2rem;
+        }
+}
+
+// labels, links & buttons
+h3 {
+    font-size: 0.8125rem;
+    line-height: 1.25rem;
+    font-weight: 600;
+
+        @include tablet {
+            font-size: 0.875rem;
+            line-height: 1.375rem;
+        }
+}
+
+// table header
+h4 {
+    font-size: 0.6875rem;
+    line-height: 1rem;
+    font-weight: 600;
+    text-transform: uppercase;
+
+        @include tablet {
+            font-size: 0.75rem;
+            line-height: 1.125rem;
+        }
+}
+
+// there are 3 different paragraph font sizes - this is p1 (the biggest)
+p {
+    font-size: 0.9375rem;
+    line-height: 1.625rem;
+    font-weight: 400;
+
+        @include tablet {
+            font-size: 1rem;
+            line-height: 1.75rem;
+        }
+}
