@@ -1,5 +1,5 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Home from "./pages/Home/Home";
+import WarehouseList from "./pages/WarehouseList/WarehouseList";
 import SelectedWarehouse from "./pages/SelectedWarehouse/SelectedWarehouse";
 import AddWarehouse from "./pages/AddWarehouse/AddWarehouse";
 import EditWarehouse from "./pages/EditWarehouse/EditWarehouse";
@@ -13,7 +13,7 @@ function App() {
     <>
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<Home />} />
+          <Route path="/" element={<WarehouseList />} />
           <Route path="/:id" element={<SelectedWarehouse />} />
           <Route path="/add-warehouse" element={<AddWarehouse />} />
           <Route path="/edit-warehouse" element={<EditWarehouse />} />
