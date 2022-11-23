@@ -4,11 +4,14 @@ import './WarehouseListHeader.scss';
 function WarehouseListHeader() {
     return (
         <section className='warehouseListHeader'>
-            <h1>Warehouses</h1>
-            <input type="search" placeholder='Search' />
-            <Link>
-                <div>Add New Warehouse</div>
-            </Link>
+            <h1 className='warehouseListHeader__title'>Warehouses</h1>
+            <div className='warehouseListHeader__container'>
+                <input className='warehouseListHeader__search' type="search" placeholder='Search...' />
+                <Link className='warehouseListHeader__link'>
+                    <div className='warehouseListHeader__button'>+ Add New Warehouse</div>
+                </Link>
+            </div>
+
         </section>
 
     );

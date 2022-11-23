@@ -1,6 +1,6 @@
-@use "../../styles/partials/breakpoints" as *;
-@use "../../styles/partials/mixins" as *;
-@use "../../styles/partials/colours" as *;
+@use "../../assets/styles/partials/breakpoints" as *;
+@use "../../assets/styles/partials/mixins" as *;
+@use "../../assets/styles/partials/colours" as *;
 
 .header {
   background-color: $dark-background-colour;
@@ -14,7 +14,10 @@
     }
 
     @include desktop {
-      padding: 1.5rem 6rem;
+      margin: 0 auto;
+      padding: 1.5rem 0;
+      // max width matches with the page layout in app.scss (classes that start with "main")
+      max-width: 63.75rem;
     }
   }
 
