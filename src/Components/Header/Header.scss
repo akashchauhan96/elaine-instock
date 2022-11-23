@@ -1,0 +1,51 @@
+@use "../../styles/partials/breakpoints" as *;
+@use "../../styles/partials/mixins" as *;
+
+.header {
+  background-color: #232940;
+
+  &__container {
+    padding: 1rem 0.5rem 0.5rem 0.5rem;
+    @include tablet {
+      display: flex;
+      justify-content: space-between;
+      padding: 1rem 1.5rem;
+    }
+
+    @include desktop {
+      padding: 1.5rem 6rem;
+    }
+  }
+
+  &__logo {
+    padding: 1rem 0;
+    height: auto;
+    width: 8rem;
+    display: block;
+    margin: auto;
+
+    @include tablet {
+      justify-self: start;
+      margin: 0;
+      padding-left: 0.5rem;
+    }
+  }
+
+  &__nav {
+    display: flex;
+    justify-content: center;
+    padding-top: 0.5rem;
+  }
+
+  &__nav-item {
+    padding: 0.5rem 2rem;
+    color: #bdc5d5;
+    border-radius: 25px;
+    margin: auto;
+
+    &--active {
+      background-color: #13182c;
+      color: #fff;
+    }
+  }
+}

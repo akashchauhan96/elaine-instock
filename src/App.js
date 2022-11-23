@@ -7,11 +7,14 @@ import InventoryList from "./pages/InventoryList/InventoryList";
 import InventoryItem from "./pages/InventoryItem/InventoryItem";
 import EditInventoryItem from "./pages/EditInventoryItem/EditInventoryItem";
 import AddInventoryItem from "./pages/AddInventoryItem/AddInventoryItem";
+import Header from "./Components/Header/Header";
+import "./App.scss";
 
 function App() {
   return (
     <>
       <BrowserRouter>
+        <Header />
         <Routes>
           <Route path="/" element={<WarehouseList />} />
           <Route path="/:id" element={<SelectedWarehouse />} />
