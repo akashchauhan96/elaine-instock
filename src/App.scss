@@ -38,7 +38,7 @@
     @include tablet {
       margin: 0 2rem;
       // left/right padding should be set to 2.5rem but has been left out so that it can be adjusted accordingly for the tables
-      padding: 2.5rem 0 0 0 0;
+      padding: 2.5rem 0 0 0;
     }
 
     @include desktop {
