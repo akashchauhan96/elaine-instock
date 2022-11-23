@@ -12,34 +12,33 @@
 .main {
 
   &__background {
+      // FYI - gradient is used to have two colours in the same div, it is not actually going to look gradient. this was the cleanest way to write this code.
       background: linear-gradient(to bottom, $dark-background-colour 3.25rem, $light-background-colour 0%,);
       height: 100%;
       width: 100%;
       padding: 0 0 1rem 0;
-      color: $instock-colour;
 
       @include tablet {
-        background: linear-gradient(0deg, $light-background-colour 87%, $dark-background-colour 87%);
+        background: linear-gradient(to bottom, $dark-background-colour 6.25rem, $light-background-colour 0%);
       }
 
       @include desktop {
-        background: linear-gradient(0deg, $light-background-colour 87%, $dark-background-colour 87%);
+        background: linear-gradient(to bottom, $dark-background-colour 7rem, $light-background-colour 0%);
       }
   }
 
   &__content {
     // left/right padding should be set to 1.5rem but has been left out so that it can be adjusted accordingly for the tables
-    padding: 1.5rem 0 50rem 0;
+    padding: 1.5rem 0 0 0;
     margin: 0 1rem;
     background-color: $light-text-colour;
     border-radius: 0.25rem;
     box-shadow: rgba(17, 17, 26, 0.1) 0 0 1rem;
-    color: $global-text-colour;
 
     @include tablet {
       margin: 0 2rem;
       // left/right padding should be set to 2.5rem but has been left out so that it can be adjusted accordingly for the tables
-      padding: 2.5rem 0 0 0;
+      padding: 2.5rem 0 0 00;
     }
 
     @include desktop {
@@ -47,7 +46,7 @@
       // left/right padding should be set to 3.5rem but has been left out so that it can be adjusted accordingly for the tables
       padding: 2.5rem 0 0 0;
       // max-width set here and should apply to all content within this div
-      max-width: 70rem;
+      max-width: 63.75rem;
     }
   }
 }
