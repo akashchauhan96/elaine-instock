@@ -1,4 +1,10 @@
+import DeleteWH from "../../Components/DeleteWH/DeleteWH";
+
 function WarehouseList() {
-  return <></>;
+  return (
+    <>
+      <DeleteWH />
+    </>
+  );
 }
 export default WarehouseList;
