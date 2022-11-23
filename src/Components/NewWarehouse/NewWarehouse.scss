@@ -1,0 +1,296 @@
+@use "../../App.scss" as *;
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/colours" as *;
+@use "../../styles/partials/fonts" as *;
+
+.new-warehouse {
+  &__title-wrapper {
+    display: flex;
+    margin: 1rem 1rem;
+    align-items: flex-end;
+    gap: 0.5rem;
+
+    @include tablet {
+      margin-left: 2.25rem;
+    }
+  }
+
+  &__title {
+    line-height: 2.5rem;
+  }
+}
+
+.form {
+  &__sections {
+    @include tablet {
+      display: flex;
+      border-top: 1px solid $accent-colour;
+    }
+  }
+}
+
+.warehouse-section {
+  padding: 1rem;
+  border-top: 1px solid $accent-colour;
+
+  @include tablet {
+    width: 50%;
+    border-right: 1px solid $accent-colour;
+    margin: 2.25rem 0 1rem 2.25rem;
+    padding: 0 2.25rem 0 0;
+    border-top: none;
+  }
+
+  &__title {
+    margin-bottom: 1.5rem;
+  }
+
+  &__name-wrapper {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1rem;
+  }
+
+  &__name-label {
+    font-size: 0.8125rem;
+    line-height: 1.25rem;
+    font-weight: 600;
+  }
+
+  &__name-input {
+    border-radius: 5rem;
+    border: 1px solid $accent-colour;
+    padding: 0.25rem 0.75rem;
+
+    &::placeholder {
+      font-size: 0.8125rem;
+      line-height: 1.25rem;
+      font-weight: 400;
+    }
+  }
+
+  &__address-wrapper {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1rem;
+  }
+
+  &__address-label {
+    font-size: 0.8125rem;
+    line-height: 1.25rem;
+    font-weight: 600;
+  }
+
+  &__address-input {
+    border-radius: 5rem;
+    border: 1px solid $accent-colour;
+    padding: 0.25rem 0.75rem;
+
+    &::placeholder {
+      font-size: 0.8125rem;
+      line-height: 1.25rem;
+      font-weight: 400;
+    }
+  }
+
+  &__city-wrapper {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1rem;
+  }
+
+  &__city-label {
+    font-size: 0.8125rem;
+    line-height: 1.25rem;
+    font-weight: 600;
+  }
+
+  &__city-input {
+    border-radius: 5rem;
+    border: 1px solid $accent-colour;
+    padding: 0.25rem 0.75rem;
+
+    &::placeholder {
+      font-size: 0.8125rem;
+      line-height: 1.25rem;
+      font-weight: 400;
+    }
+  }
+
+  &__country-wrapper {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__country-label {
+    font-size: 0.8125rem;
+    line-height: 1.25rem;
+    font-weight: 600;
+  }
+
+  &__country-input {
+    border-radius: 5rem;
+    border: 1px solid $accent-colour;
+    padding: 0.25rem 0.75rem;
+
+    &::placeholder {
+      font-size: 0.8125rem;
+      line-height: 1.25rem;
+      font-weight: 400;
+    }
+  }
+}
+
+.contact-section {
+  padding: 1rem;
+  border-top: 1px solid $accent-colour;
+
+  @include tablet {
+    width: 50%;
+    margin: 2.25rem 2.25rem 2.25rem 0;
+    padding: 0 0 0 2.25rem;
+    border-top: none;
+  }
+
+  &__title {
+    margin-bottom: 1.5rem;
+  }
+
+  &__contact-wrapper {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1rem;
+  }
+
+  &__name-label {
+    font-size: 0.8125rem;
+    line-height: 1.25rem;
+    font-weight: 600;
+  }
+
+  &__name-input {
+    border-radius: 5rem;
+    border: 1px solid $accent-colour;
+    padding: 0.25rem 0.75rem;
+
+    &::placeholder {
+      font-size: 0.8125rem;
+      line-height: 1.25rem;
+      font-weight: 400;
+    }
+  }
+
+  &__position-wrapper {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1rem;
+  }
+
+  &__position-label {
+    font-size: 0.8125rem;
+    line-height: 1.25rem;
+    font-weight: 600;
+  }
+
+  &__position-input {
+    border-radius: 5rem;
+    border: 1px solid $accent-colour;
+    padding: 0.25rem 0.75rem;
+
+    &::placeholder {
+      font-size: 0.8125rem;
+      line-height: 1.25rem;
+      font-weight: 400;
+    }
+  }
+
+  &__phone-wrapper {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1rem;
+  }
+
+  &__phone-label {
+    font-size: 0.8125rem;
+    line-height: 1.25rem;
+    font-weight: 600;
+  }
+
+  &__phone-input {
+    border-radius: 5rem;
+    border: 1px solid $accent-colour;
+    padding: 0.25rem 0.75rem;
+
+    &::placeholder {
+      font-size: 0.8125rem;
+      line-height: 1.25rem;
+      font-weight: 400;
+    }
+  }
+
+  &__email-wrapper {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__email-label {
+    font-size: 0.8125rem;
+    line-height: 1.25rem;
+    font-weight: 600;
+  }
+
+  &__email-input {
+    border-radius: 5rem;
+    border: 1px solid $accent-colour;
+    padding: 0.25rem 0.75rem;
+
+    &::placeholder {
+      font-size: 0.8125rem;
+      line-height: 1.25rem;
+      font-weight: 400;
+    }
+  }
+}
+
+.buttons {
+  padding: 0.75rem 1rem;
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  background-color: $light-background-colour;
+
+  @include tablet {
+    justify-content: flex-end;
+    padding: 0.7rem 2.25rem;
+  }
+
+  &__cancel {
+    display: block;
+    width: 100%;
+    border-radius: 5rem;
+    padding: 0.5rem;
+    border: 1px solid $accent-colour;
+    background-color: $light-text-colour;
+    font-weight: 600;
+
+    @include tablet {
+      width: auto;
+      padding: 0.5rem 1rem;
+    }
+  }
+
+  &__add-warehouse {
+    display: block;
+    width: 100%;
+    border-radius: 5rem;
+    border: 1px solid $accent-colour;
+    background-color: $button-colour;
+    color: $light-text-colour;
+    font-weight: 600;
+
+    @include tablet {
+      width: auto;
+      padding: 0.5rem 1rem;
+    }
+  }
+}
