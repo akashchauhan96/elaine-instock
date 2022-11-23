@@ -4,24 +4,18 @@
 @use "./assets/styles/partials/fonts" as *;
 
 * {
-  font-family: 'Trillium';
+  font-family: "Trillium";
   box-sizing: border-box;
   margin: 0;
-}
-
-
-h2 {
-  background-color: $dark-background-colour;
-  color: $light-text-colour;
-  border-bottom: 0.1rem solid $dark-background-colour;
 }
 
 .main {
 
   &__background {
-      background: linear-gradient(0deg, $light-background-colour 93%, $dark-background-colour 93%);
-      height: 100vh;
+      background: linear-gradient(to bottom, $dark-background-colour 3.25rem, $light-background-colour 0%,);
+      height: 100%;
       width: 100%;
+      padding: 0 0 1rem 0;
       color: $instock-colour;
 
       @include tablet {
@@ -35,7 +29,7 @@ h2 {
 
   &__content {
     // left/right padding should be set to 1.5rem but has been left out so that it can be adjusted accordingly for the tables
-    padding: 1.5rem 0 0 0;
+    padding: 1.5rem 0 50rem 0;
     margin: 0 1rem;
     background-color: $light-text-colour;
     border-radius: 0.25rem;
