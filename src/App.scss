@@ -1,10 +1,59 @@
-@use './assets/styles/partials/breakpoints' as *;
-@use './assets/styles/partials/mixins' as *;
-@use './assets/styles/partials/colours' as *;
-@use './assets/styles/partials/fonts' as *;
+@use "./assets/styles/partials/breakpoints" as *;
+@use "./assets/styles/partials/mixins" as *;
+@use "./assets/styles/partials/colours" as *;
+@use "./assets/styles/partials/fonts" as *;
 
 * {
   font-family: 'Trillium';
   box-sizing: border-box;
   margin: 0;
+}
+
+
+h2 {
+  background-color: $dark-background-colour;
+  color: $light-text-colour;
+  border-bottom: 0.1rem solid $dark-background-colour;
+}
+
+.main {
+
+  &__background {
+      background: linear-gradient(0deg, $light-background-colour 93%, $dark-background-colour 93%);
+      height: 100vh;
+      width: 100%;
+      color: $instock-colour;
+
+      @include tablet {
+        background: linear-gradient(0deg, $light-background-colour 87%, $dark-background-colour 87%);
+      }
+
+      @include desktop {
+        background: linear-gradient(0deg, $light-background-colour 87%, $dark-background-colour 87%);
+      }
+  }
+
+  &__content {
+    // left/right padding should be set to 1.5rem but has been left out so that it can be adjusted accordingly for the tables
+    padding: 1.5rem 0 0 0;
+    margin: 0 1rem;
+    background-color: $light-text-colour;
+    border-radius: 0.25rem;
+    box-shadow: rgba(17, 17, 26, 0.1) 0 0 1rem;
+    color: $global-text-colour;
+
+    @include tablet {
+      margin: 0 2rem;
+      // left/right padding should be set to 2.5rem but has been left out so that it can be adjusted accordingly for the tables
+      padding: 2.5rem 0 0 0;
+    }
+
+    @include desktop {
+      margin: auto;
+      // left/right padding should be set to 3.5rem but has been left out so that it can be adjusted accordingly for the tables
+      padding: 2.5rem 0 0 0;
+      // max-width set here and should apply to all content within this div
+      max-width: 70rem;
+    }
+  }
 }
