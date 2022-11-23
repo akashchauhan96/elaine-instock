@@ -1,8 +1,9 @@
 @use "../../styles/partials/breakpoints" as *;
 @use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/colours" as *;
 
 .header {
-  background-color: #232940;
+  background-color: $dark-background-colour;
 
   &__container {
     padding: 1rem 0.5rem 0.5rem 0.5rem;
