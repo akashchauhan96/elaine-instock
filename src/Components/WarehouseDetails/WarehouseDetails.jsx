@@ -1,36 +1,41 @@
 import './WarehouseDetails.scss';
 import backArrow from '../../assets/icons/arrow_back-24px.svg';
 import editIcon from '../../assets/icons/edit-24px.svg';
+import { Link } from 'react-router-dom';
 
-export default function WarehouseDetails () {
+export default function WarehouseDetails ( { warehousePageDetails } ) {
+
     return (
         <div className='warehouse'>
         <div className='warehouse__header'>
             <div className='warehouse__title'>
-                <img src={ backArrow } alt="Go Back" />
-                <h1 className='warehouse__name'>Warehouse Name</h1>
+                <Link to="/">
+                    <img src={ backArrow } alt="Go Back" />
+                </Link>
+                <h1 className='warehouse__name'>{ warehousePageDetails.warehouse_name }</h1>
             </div>
-            <img src={ editIcon } alt="Edit Warehouse" />
+            <Link to="/edit-warehouse">
+                <img src={ editIcon } alt="Edit Warehouse" />
+            </Link>
         </div>
             <div className='warehouse__details-container'>
                 <div className='warehouse__details'>
                     <h4 className='warehouse__detail'>Warehouse Address:</h4>
-                    <p className='warehouse__info'>Street Address, State, Country</p>
+                    <p className='warehouse__info'>{ warehousePageDetails.address }, { warehousePageDetails.city }, { warehousePageDetails.country }</p>
                 </div>
                 <div className='warehouse__more-details'>
                     <div className='warehouse__details'>
                         <h4 className='warehouse__detail'>Contact Name:</h4>
-                        <p className='warehouse__info'>Name</p>
-                        <p className='warehouse__info'>Title</p>
+                        <p className='warehouse__info'>{ warehousePageDetails.contact_name }</p>
+                        <p className='warehouse__info'>{ warehousePageDetails.contact_position }</p>
                     </div>
                     <div className='warehouse__details'>
                         <h4 className='warehouse__detail'>Contact Information:</h4>
-                        <p className='warehouse__info'>Phone Number</p>
-                        <p className='warehouse__info'>Email</p>                       
+                        <p className='warehouse__info'>{ warehousePageDetails.contact_phone }</p>
+                        <p className='warehouse__info'>{ warehousePageDetails.contact_email }</p>                       
                     </div>
                 </div>
             </div>
-
         </div>
     )
 }

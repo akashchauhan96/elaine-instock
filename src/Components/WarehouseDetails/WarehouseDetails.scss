@@ -10,12 +10,22 @@
         justify-content: space-between;
         align-items: center;
         padding: 0 1.5rem 1rem 1.5rem;
+
+        @include tablet {
+            padding: 0 2rem 2rem 2rem;
+        }
     }
 
     &__title {
         display: flex;
         flex-direction: row;
+        align-items: center;
     }
+
+    // &__edit {
+    //     fill: $light-text-colour;
+    //     background-color: $button-colour;
+    // }
 
     &__name {
         padding: 0 0 0 0.5rem;
@@ -29,6 +39,8 @@
 
         @include tablet {
             flex-direction: row;
+            justify-content: space-between;
+            padding: 2rem;
         }
     }
 
@@ -38,6 +50,12 @@
         justify-content: space-between;
         padding: 3rem 2rem 0 0;
         max-width: 23rem;
+
+        @include tablet {
+            padding: 0 3rem 0 2.5rem;
+            gap: 2rem;
+            border-left: 1px solid $accent-colour;
+        }
     }
 
 
