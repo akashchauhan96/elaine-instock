@@ -16,6 +16,11 @@
         border-bottom: 1px $accent-colour solid;
     }
 
+    &:hover {
+        background-color: rgba(46, 102, 229, 0.07);
+    
+    }
+
     // For last element in the table
     &--noBorder {
 
@@ -117,6 +122,11 @@
     &__link {
         text-decoration: none;
         display: flex;
+
+        &:hover {
+            text-decoration: underline;
+        
+        }
     }
 
     &__name {
