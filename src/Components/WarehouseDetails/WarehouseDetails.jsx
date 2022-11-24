@@ -1,6 +1,6 @@
 import './WarehouseDetails.scss';
 import backArrow from '../../assets/icons/arrow_back-24px.svg';
-import editIcon from '../../assets/icons/edit-24px.svg';
+import editIcon from '../../assets/icons/edit-white-24px.svg';
 import { Link } from 'react-router-dom';
 
 export default function WarehouseDetails ( { warehousePageDetails } ) {
@@ -10,16 +10,14 @@ export default function WarehouseDetails ( { warehousePageDetails } ) {
         <div className='warehouse__header'>
             <div className='warehouse__title'>
                 <Link to="/">
-                    <img src={ backArrow } alt="Go Back" />
+                    <img className="warehouse__back-icon" src={ backArrow } alt="Go Back" />
                 </Link>
-                <h1 className='warehouse__name'>{ warehousePageDetails.warehouse_name }</h1>
+                <h1 className='warehouse__name' key={ warehousePageDetails.id }>{ warehousePageDetails.warehouse_name }</h1>
             </div>
-            {/* <div className='warehouse__edit'> */}
-                <Link className="warehouse__edit" to="/edit-warehouse">
-                    <img className="warehouse__edit-icon" src={ editIcon } alt="Edit Warehouse" />
-                    <p className="warehouse__edit-text">Edit</p>
-                </Link>
-            {/* </div> */}
+            <Link className="warehouse__edit" to={`/edit-warehouse/${warehousePageDetails.id}`}>
+                <img className="warehouse__edit-icon" src={ editIcon } alt="Edit Warehouse" />
+                <p className="warehouse__edit-text">Edit</p>
+            </Link>
         </div>
             <div className='warehouse__details-container'>
                 <div className='warehouse__details'>

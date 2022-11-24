@@ -1,6 +1,6 @@
 import './WarehouseListItem.scss';
 import deleteIcon from '../../assets/icons/delete_outline-24px.svg';
-import editIcon from '../../assets/icons/edit-24px.svg';
+import editIcon from '../../assets/icons/edit-24px-blue.svg';
 import rightChevron from '../../assets/icons/chevron_right-24px.svg';
 import { Link } from 'react-router-dom';
 
@@ -13,7 +13,7 @@ function WarehouseListItem({ warehouse, isLastWarehouse }) {
                 <div className='warehouseListItem__info warehouseListItem__info--first'>
                     <h4 className='warehouseListItem__title'>Warehouse</h4>
                     <div className='warehouseListItem__nameWrapper'>
-                        <Link className='warehouseListItem__link' to={`/${warehouse.id}`}>
+                        <Link className='warehouseListItem__link' to={`/warehouse/${warehouse.id}`}>
                             <h3 className='warehouseListItem__name'>{warehouse.warehouse_name}</h3>
                             <img src={rightChevron} alt="Right Chevron Icon" />
                         </Link>
