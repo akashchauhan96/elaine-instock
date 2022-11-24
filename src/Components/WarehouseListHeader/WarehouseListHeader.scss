@@ -3,18 +3,22 @@
 @use '../../assets/styles/partials/mixins' as *;
 
 .warehouseListHeader {
-    padding: 0 1.5rem 1rem;
-    border-bottom: 1px $accent-colour solid;
+    padding: 0 1.5rem 1rem 1.5rem;
     display: flex;
     flex-direction: column;
 
     @include tablet {
         flex-direction: row;
         justify-content: space-between;
+        padding: 0 2rem 1.5rem 2rem;
     }
 
     &__title {
         margin: 0 0 1.5rem 0;
+
+        @include tablet {
+            margin: 0;
+        }
     }
 
     &__container {
@@ -23,7 +27,7 @@
             display: flex;
             justify-content: flex-end;
             width: 65%;
-            max-width: 31.875rem;
+            max-width: 30rem;
         }
     }
 
@@ -49,6 +53,7 @@
 
         @include tablet {
             height: 2.375rem;
+            margin-bottom: 0;
         }
     }
 
