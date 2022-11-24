@@ -1,13 +1,24 @@
 import './WarehouseListTable.scss';
 import WarehouseListItem from '../WarehouseListItem/WarehouseListItem';
 import sortIcon from '../../assets/icons/sort-24px.svg'
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
+import axios from 'axios';
+import { URL } from '../../utils/util';
 
 function WarehouseListTable() {
+    const [warehouses, setWarehouses] = useState(null);
 
     useEffect(() => {
-
+        axios.get(URL + "/warehouse").then((response) => {
+            setWarehouses(response.data);
+        }).catch((err) => {
+            console.log(`An error occured while trying to access the warehouses: ${err}`);
+        })
     }, []);
+
+    if (!warehouses) {
+        return <h1>Loading...</h1>
+    }
 
     return (
         <>
@@ -32,9 +43,12 @@ function WarehouseListTable() {
                     <h4>Actions</h4>
                 </div>
             </div>
-            <WarehouseListItem />
+            {/* Display warehouses conatined within array in warehouses state variable */}
+            {warehouses.map((warehouse) => {
+                // Checks to see if it is the last warehouse in the list and pass as prop to remove border 
+                return <WarehouseListItem key={warehouse.id} warehouse={warehouse} isLastWarehouse={warehouse.id === warehouses[warehouses.length - 1].id ? true : false}/>
+            })}
         </>
-
     );
 }
 

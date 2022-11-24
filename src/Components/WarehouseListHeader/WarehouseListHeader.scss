@@ -58,7 +58,6 @@
     }
 
     &__link {
-
         width: 100%;
         text-decoration: none;
 
@@ -81,6 +80,9 @@
         @include tablet {
             height: 2.375rem;
         }
-    }
 
+        &:hover {
+            background-color: $dark-background-colour;
+        }
+    }
 }

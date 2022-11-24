@@ -14,7 +14,6 @@
         height: 2.5rem;
     }
 
-
     &__column {
 
         @include tablet {
@@ -22,9 +21,9 @@
             align-items: center;
             text-transform: uppercase;
             color: $header-colour;
-
         }
 
+        //Modifiers to give more granular control over element widths
         &--first {
             width: 24%;
 
@@ -65,8 +64,5 @@
                 width: 6%;
             }
         }
-
-        
-
     }
 }
