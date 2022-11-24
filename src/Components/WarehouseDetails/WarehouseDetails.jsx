@@ -14,9 +14,12 @@ export default function WarehouseDetails ( { warehousePageDetails } ) {
                 </Link>
                 <h1 className='warehouse__name'>{ warehousePageDetails.warehouse_name }</h1>
             </div>
-            <Link to="/edit-warehouse">
-                <img src={ editIcon } alt="Edit Warehouse" />
-            </Link>
+            {/* <div className='warehouse__edit'> */}
+                <Link className="warehouse__edit" to="/edit-warehouse">
+                    <img className="warehouse__edit-icon" src={ editIcon } alt="Edit Warehouse" />
+                    <p className="warehouse__edit-text">Edit</p>
+                </Link>
+            {/* </div> */}
         </div>
             <div className='warehouse__details-container'>
                 <div className='warehouse__details'>
