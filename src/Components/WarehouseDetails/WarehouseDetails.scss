@@ -22,13 +22,27 @@
         align-items: center;
     }
 
-    // &__edit {
-    //     fill: $light-text-colour;
-    //     background-color: $button-colour;
-    // }
-
     &__name {
         padding: 0 0 0 0.5rem;
+    }
+
+    &__edit {
+        text-decoration: none;
+        display: flex;
+        flex-direction: row;
+        background-color: $button-colour;
+        padding: 0 1rem;
+        border-radius: 1rem;
+    }
+
+    &__edit-text {
+        display: none;
+
+        @include tablet {
+        display: flex;
+        padding: 0 0 0 0.5rem;
+        color: $light-text-colour;
+        }
     }
 
     &__details-container {
@@ -48,13 +62,16 @@
         display: flex;
         flex-direction: row;
         justify-content: space-between;
+        flex-wrap: wrap;
         padding: 3rem 2rem 0 0;
-        max-width: 23rem;
+        // i think a max-width here max the mobile view look a little nicer at wider sizes.
+        max-width: 33rem;
 
         @include tablet {
             padding: 0 3rem 0 2.5rem;
-            gap: 2rem;
+            gap: 2.5rem;
             border-left: 1px solid $accent-colour;
+            max-width: none;
         }
     }
 
