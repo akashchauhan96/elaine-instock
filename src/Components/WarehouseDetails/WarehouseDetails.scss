@@ -1,0 +1,44 @@
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/colours" as *;
+@use "../../styles/partials/breakpoints" as *;
+
+.warehouse {
+
+    &__header {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0 1.5rem 1rem 1.5rem;
+    }
+
+    &__title {
+        display: flex;
+        flex-direction: row;
+    }
+
+    &__name {
+        padding: 0 0 0 0.5rem;
+    }
+
+    &__details-container {
+        display: flex;
+        flex-direction: column;
+        border-top: 1px solid $accent-colour;
+        padding: 1.5rem;
+
+        @include tablet {
+            flex-direction: row;
+        }
+    }
+
+    &__more-details {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        padding: 3rem 2rem 0 0;
+        max-width: 23rem;
+    }
+
+
+}
