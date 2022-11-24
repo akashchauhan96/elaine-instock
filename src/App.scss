@@ -1,10 +1,52 @@
-@use "./styles/partials/breakpoints" as *;
-@use "./styles/partials/colours" as *;
-@use "./styles/partials/fonts" as *;
-@use "./styles/partials/mixins" as *;
+@use "./assets/styles/partials/breakpoints" as *;
+@use "./assets/styles/partials/mixins" as *;
+@use "./assets/styles/partials/colours" as *;
+@use "./assets/styles/partials/fonts" as *;
 
 * {
   font-family: "Trillium";
   box-sizing: border-box;
   margin: 0;
+}
+
+.main {
+
+  &__background {
+      // FYI - gradient is used to have two colours in the same div, it is not actually going to look gradient. this was the cleanest way to write this code.
+      background: linear-gradient(to bottom, $dark-background-colour 3.25rem, $light-background-colour 0%,);
+      height: 100%;
+      width: 100%;
+      padding: 0 0 1rem 0;
+
+      @include tablet {
+        background: linear-gradient(to bottom, $dark-background-colour 6.25rem, $light-background-colour 0%);
+      }
+
+      @include desktop {
+        background: linear-gradient(to bottom, $dark-background-colour 7rem, $light-background-colour 0%);
+      }
+  }
+
+  &__content {
+    // left/right padding should be set to 1.5rem but has been left out so that it can be adjusted accordingly for the tables
+    padding: 1.5rem 0 0 0;
+    margin: 0 1rem;
+    background-color: $light-text-colour;
+    border-radius: 0.25rem;
+    box-shadow: rgba(17, 17, 26, 0.1) 0 0 1rem;
+
+    @include tablet {
+      margin: 0 2rem;
+      // left/right padding should be set to 2.5rem but has been left out so that it can be adjusted accordingly for the tables
+      padding: 2.5rem 0 0 0;
+    }
+
+    @include desktop {
+      margin: auto;
+      // left/right padding should be set to 3.5rem but has been left out so that it can be adjusted accordingly for the tables
+      padding: 2.5rem 0 0 0;
+      // max-width set here and should apply to all content within this div
+      max-width: 63.75rem;
+    }
+  }
 }
