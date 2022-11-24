@@ -1,7 +1,9 @@
 import { Link, useNavigate } from "react-router-dom";
 import arrowBack from "../../assets/icons/arrow_back-24px.svg";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import "./NewWarehouse.scss";
+import error from "../../assets/icons/error-24px.svg";
+import validator from "validator";
 
 export default function NewWarehouse() {
   const [warehouseName, setWarehouseName] = useState("");
@@ -14,20 +16,41 @@ export default function NewWarehouse() {
   const [email, setEmail] = useState("");
 
   const handleOnSubmit = (e) => {
-    console.log(e.target);
+    e.preventDefault();
+    console.log(e);
+    const newWarehouseName = e.target[0].value;
+    const newAddress = e.target[1].value;
+    const newCity = e.target[2].value;
+    const newCountry = e.target[3].value;
+    const newContactName = e.target[4].value;
+    const newPosition = e.target[5].value;
+    const newPhoneNum = e.target[6].value;
+    const newEmail = e.target[7].value;
+
+    // if (!newWarehouseName) {
+
+    // }
+    //   !newAddress ||
+    //   !newCity ||
+    //   !newCountry ||
+    //   !newContactName ||
+    //   !newPosition ||
+    //   !newPhoneNum ||
+    //   !newEmail
+    // )
   };
 
   return (
     <>
       <div className="new-warehouse__title-wrapper">
-        <Link to="#">
+        <Link to="#" className="new-warehouse__back-link">
           <img
             className="new-warehouse__back-button"
             src={arrowBack}
             alt="Arrow to direct user to main warehouse page"
           />
         </Link>
-        <h1 className="new-warehouse__title">Add Warehouse</h1>
+        <h1 className="new-warehouse__title">Add New Warehouse</h1>
       </div>
       <form className="form" onSubmit={handleOnSubmit}>
         <div className="form__sections">
@@ -47,6 +70,16 @@ export default function NewWarehouse() {
                   setWarehouseName(e.target.value);
                 }}
               />
+              <div className="warehouse-section__error-state">
+                <img
+                  src={error}
+                  alt="Exclamation point icon to indicate when text field is empty"
+                  className="warehouse-section__error-icon"
+                />
+                <span className="warehouse-section__error-command">
+                  This field is required
+                </span>
+              </div>
             </div>
             <div className="warehouse-section__address-wrapper">
               <label className="warehouse-section__address-label">
@@ -62,6 +95,16 @@ export default function NewWarehouse() {
                   setStreetAddress(e.target.value);
                 }}
               />
+              <div className="warehouse-section__error-state">
+                <img
+                  src={error}
+                  alt="Exclamation point icon to indicate when text field is empty"
+                  className="warehouse-section__error-icon"
+                />
+                <span className="warehouse-section__error-command">
+                  This field is required
+                </span>
+              </div>
             </div>
             <div className="warehouse-section__city-wrapper">
               <label className="warehouse-section__city-label">City</label>
@@ -75,6 +118,18 @@ export default function NewWarehouse() {
                   setCity(e.target.value);
                 }}
               />
+              {validator.isEmpty(`${city}`) && (
+                <div className="warehouse-section__error-state">
+                  <img
+                    src={error}
+                    alt="Exclamation point icon to indicate when text field is empty"
+                    className="warehouse-section__error-icon"
+                  />
+                  <span className="warehouse-section__error-command">
+                    This field is required
+                  </span>
+                </div>
+              )}
             </div>
             <div className="warehouse-section__country-wrapper">
               <label className="warehouse-section__country-label">
@@ -90,6 +145,16 @@ export default function NewWarehouse() {
                   setCountry(e.target.value);
                 }}
               />
+              <div className="warehouse-section__error-state">
+                <img
+                  src={error}
+                  alt="Exclamation point icon to indicate when text field is empty"
+                  className="warehouse-section__error-icon"
+                />
+                <span className="warehouse-section__error-command">
+                  This field is required
+                </span>
+              </div>
             </div>
           </div>
           <div className="contact-section">
@@ -108,6 +173,16 @@ export default function NewWarehouse() {
                   setContactName(e.target.value);
                 }}
               />
+              <div className="contact-section__error-state">
+                <img
+                  src={error}
+                  alt="Exclamation point icon to indicate when text field is empty"
+                  className="contact-section__error-icon"
+                />
+                <span className="contact-section__error-command">
+                  This field is required
+                </span>
+              </div>
             </div>
             <div className="contact-section__position-wrapper">
               <label className="contact-section__position-label">
@@ -123,6 +198,16 @@ export default function NewWarehouse() {
                   setPosition(e.target.value);
                 }}
               />
+              <div className="contact-section__error-state">
+                <img
+                  src={error}
+                  alt="Exclamation point icon to indicate when text field is empty"
+                  className="contact-section__error-icon"
+                />
+                <span className="contact-section__error-command">
+                  This field is required
+                </span>
+              </div>
             </div>
             <div className="contact-section__phone-wrapper">
               <label className="contact-section__phone-label">
@@ -138,6 +223,16 @@ export default function NewWarehouse() {
                   setPhoneNumber(e.target.value);
                 }}
               />
+              <div className="contact-section__error-state">
+                <img
+                  src={error}
+                  alt="Exclamation point icon to indicate when text field is empty"
+                  className="contact-section__error-icon"
+                />
+                <span className="contact-section__error-command">
+                  This field is required
+                </span>
+              </div>
             </div>
             <div className="contact-section__email-wrapper">
               <label className="contact-section__email-label">Email</label>
@@ -151,6 +246,16 @@ export default function NewWarehouse() {
                   setEmail(e.target.value);
                 }}
               />
+              <div className="contact-section__error-state">
+                <img
+                  src={error}
+                  alt="Exclamation point icon to indicate when text field is empty"
+                  className="contact-section__error-icon"
+                />
+                <span className="contact-section__error-command">
+                  This field is required
+                </span>
+              </div>
             </div>
           </div>
         </div>
