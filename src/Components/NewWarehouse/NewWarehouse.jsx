@@ -14,30 +14,35 @@ export default function NewWarehouse() {
   const [position, setPosition] = useState("");
   const [phoneNumber, setPhoneNumber] = useState("");
   const [email, setEmail] = useState("");
+  const [isValid, setIsValid] = useState(true);
 
   const handleOnSubmit = (e) => {
     e.preventDefault();
-    console.log(e);
-    const newWarehouseName = e.target[0].value;
-    const newAddress = e.target[1].value;
-    const newCity = e.target[2].value;
-    const newCountry = e.target[3].value;
-    const newContactName = e.target[4].value;
-    const newPosition = e.target[5].value;
-    const newPhoneNum = e.target[6].value;
-    const newEmail = e.target[7].value;
 
-    // if (!newWarehouseName) {
-
-    // }
-    //   !newAddress ||
-    //   !newCity ||
-    //   !newCountry ||
-    //   !newContactName ||
-    //   !newPosition ||
-    //   !newPhoneNum ||
-    //   !newEmail
-    // )
+    if (
+      !warehouseName ||
+      !streetAddress ||
+      !city ||
+      !country ||
+      !contactName ||
+      !position ||
+      !phoneNumber ||
+      !email
+    ) {
+      setIsValid(false);
+      return;
+    } else {
+      const newWarehouse = {};
+      newWarehouse.warehouseName = e.target.warehouseName.value;
+      newWarehouse.address = e.target.streetAddress.value;
+      newWarehouse.city = e.target.city.value;
+      newWarehouse.country = e.target.country.value;
+      newWarehouse.contactName = e.target.contactName.value;
+      newWarehouse.position = e.target.position.value;
+      newWarehouse.phoneNumber = e.target.phoneNumber.value;
+      newWarehouse.email = e.target.email.value;
+      setIsValid(true);
+    }
   };
 
   return (
@@ -56,69 +61,23 @@ export default function NewWarehouse() {
         <div className="form__sections">
           <div className="warehouse-section">
             <h2 className="warehouse-section__title">Warehouse Details</h2>
-            <div className="warehouse-section__name-wrapper">
-              <label className="warehouse-section__name-label">
-                Warehouse Name
-              </label>
+            <div className="warehouse-section__wrapper">
+              <label className="warehouse-section__label">Warehouse Name</label>
               <input
                 type="text"
-                className="warehouse-section__name-input"
-                name="warehouse-name"
+                className={`warehouse-section__input ${
+                  !isValid && warehouseName === ""
+                    ? "warehouse-section__input--error"
+                    : ""
+                }`}
+                name="warehouseName"
                 value={warehouseName}
                 placeholder="Warehouse Name"
                 onChange={(e) => {
                   setWarehouseName(e.target.value);
                 }}
               />
-              <div className="warehouse-section__error-state">
-                <img
-                  src={error}
-                  alt="Exclamation point icon to indicate when text field is empty"
-                  className="warehouse-section__error-icon"
-                />
-                <span className="warehouse-section__error-command">
-                  This field is required
-                </span>
-              </div>
-            </div>
-            <div className="warehouse-section__address-wrapper">
-              <label className="warehouse-section__address-label">
-                Street Address
-              </label>
-              <input
-                type="text"
-                className="warehouse-section__address-input"
-                name="street-address"
-                value={streetAddress}
-                placeholder="Street Address"
-                onChange={(e) => {
-                  setStreetAddress(e.target.value);
-                }}
-              />
-              <div className="warehouse-section__error-state">
-                <img
-                  src={error}
-                  alt="Exclamation point icon to indicate when text field is empty"
-                  className="warehouse-section__error-icon"
-                />
-                <span className="warehouse-section__error-command">
-                  This field is required
-                </span>
-              </div>
-            </div>
-            <div className="warehouse-section__city-wrapper">
-              <label className="warehouse-section__city-label">City</label>
-              <input
-                type="text"
-                className="warehouse-section__city-input"
-                name="city"
-                value={city}
-                placeholder="City"
-                onChange={(e) => {
-                  setCity(e.target.value);
-                }}
-              />
-              {validator.isEmpty(`${city}`) && (
+              {!isValid && warehouseName === "" ? (
                 <div className="warehouse-section__error-state">
                   <img
                     src={error}
@@ -129,15 +88,81 @@ export default function NewWarehouse() {
                     This field is required
                   </span>
                 </div>
+              ) : (
+                ""
               )}
             </div>
-            <div className="warehouse-section__country-wrapper">
-              <label className="warehouse-section__country-label">
-                Country
-              </label>
+            <div className="warehouse-section__wrapper">
+              <label className="warehouse-section__label">Street Address</label>
               <input
                 type="text"
-                className="warehouse-section__country-input"
+                className={`warehouse-section__input ${
+                  !isValid && streetAddress === ""
+                    ? "warehouse-section__input--error"
+                    : ""
+                }`}
+                name="streetAddress"
+                value={streetAddress}
+                placeholder="Street Address"
+                onChange={(e) => {
+                  setStreetAddress(e.target.value);
+                }}
+              />
+              {!isValid && streetAddress === "" ? (
+                <div className="warehouse-section__error-state">
+                  <img
+                    src={error}
+                    alt="Exclamation point icon to indicate when text field is empty"
+                    className="warehouse-section__error-icon"
+                  />
+                  <span className="warehouse-section__error-command">
+                    This field is required
+                  </span>
+                </div>
+              ) : (
+                ""
+              )}
+            </div>
+            <div className="warehouse-section__wrapper">
+              <label className="warehouse-section__label">City</label>
+              <input
+                type="text"
+                className={`warehouse-section__input ${
+                  !isValid && city === ""
+                    ? "warehouse-section__input--error"
+                    : ""
+                }`}
+                name="city"
+                value={city}
+                placeholder="City"
+                onChange={(e) => {
+                  setCity(e.target.value);
+                }}
+              />
+              {!isValid && city === "" ? (
+                <div className="warehouse-section__error-state">
+                  <img
+                    src={error}
+                    alt="Exclamation point icon to indicate when text field is empty"
+                    className="warehouse-section__error-icon"
+                  />
+                  <span className="warehouse-section__error-command">
+                    This field is required
+                  </span>
+                </div>
+              ) : (
+                ""
+              )}
+            </div>
+            <div className="warehouse-section__wrapper">
+              <label className="warehouse-section__label">Country</label>
+              <input
+                type="text"
+                className={`warehouse-section__input ${
+                  !isValid && country === ""
+                    ? "warehouse-section__input--error"
+                    : ""
+                }`}
                 name="country"
                 value={country}
                 placeholder="Country"
@@ -145,52 +170,64 @@ export default function NewWarehouse() {
                   setCountry(e.target.value);
                 }}
               />
-              <div className="warehouse-section__error-state">
-                <img
-                  src={error}
-                  alt="Exclamation point icon to indicate when text field is empty"
-                  className="warehouse-section__error-icon"
-                />
-                <span className="warehouse-section__error-command">
-                  This field is required
-                </span>
-              </div>
+              {!isValid && country === "" ? (
+                <div className="warehouse-section__error-state">
+                  <img
+                    src={error}
+                    alt="Exclamation point icon to indicate when text field is empty"
+                    className="warehouse-section__error-icon"
+                  />
+                  <span className="warehouse-section__error-command">
+                    This field is required
+                  </span>
+                </div>
+              ) : (
+                ""
+              )}
             </div>
           </div>
           <div className="contact-section">
             <h2 className="contact-section__title">Contact Details</h2>
-            <div className="contact-section__contact-wrapper">
-              <label className="contact-section__name-label">
-                Contact Name
-              </label>
+            <div className="contact-section__wrapper">
+              <label className="contact-section__label">Contact Name</label>
               <input
                 type="text"
-                className="contact-section__name-input"
-                name="contact-name"
+                className={`contact-section__input ${
+                  !isValid && contactName === ""
+                    ? "contact-section__input--error"
+                    : ""
+                }`}
+                name="contactName"
                 value={contactName}
                 placeholder="Contact Name"
                 onChange={(e) => {
                   setContactName(e.target.value);
                 }}
               />
-              <div className="contact-section__error-state">
-                <img
-                  src={error}
-                  alt="Exclamation point icon to indicate when text field is empty"
-                  className="contact-section__error-icon"
-                />
-                <span className="contact-section__error-command">
-                  This field is required
-                </span>
-              </div>
+              {!isValid && contactName === "" ? (
+                <div className="contact-section__error-state">
+                  <img
+                    src={error}
+                    alt="Exclamation point icon to indicate when text field is empty"
+                    className="contact-section__error-icon"
+                  />
+                  <span className="contact-section__error-command">
+                    This field is required
+                  </span>
+                </div>
+              ) : (
+                ""
+              )}
             </div>
-            <div className="contact-section__position-wrapper">
-              <label className="contact-section__position-label">
-                Position
-              </label>
+            <div className="contact-section__wrapper">
+              <label className="contact-section__label">Position</label>
               <input
                 type="text"
-                className="contact-section__position-input"
+                className={`contact-section__input ${
+                  !isValid && position === ""
+                    ? "contact-section__input--error"
+                    : ""
+                }`}
                 name="position"
                 value={position}
                 placeholder="Position"
@@ -198,47 +235,61 @@ export default function NewWarehouse() {
                   setPosition(e.target.value);
                 }}
               />
-              <div className="contact-section__error-state">
-                <img
-                  src={error}
-                  alt="Exclamation point icon to indicate when text field is empty"
-                  className="contact-section__error-icon"
-                />
-                <span className="contact-section__error-command">
-                  This field is required
-                </span>
-              </div>
+              {!isValid && position === "" ? (
+                <div className="contact-section__error-state">
+                  <img
+                    src={error}
+                    alt="Exclamation point icon to indicate when text field is empty"
+                    className="contact-section__error-icon"
+                  />
+                  <span className="contact-section__error-command">
+                    This field is required
+                  </span>
+                </div>
+              ) : (
+                ""
+              )}
             </div>
-            <div className="contact-section__phone-wrapper">
-              <label className="contact-section__phone-label">
-                Phone Number
-              </label>
+            <div className="contact-section__wrapper">
+              <label className="contact-section__label">Phone Number</label>
               <input
                 type="text"
-                className="contact-section__phone-input"
-                name="phone-number"
+                className={`contact-section__input ${
+                  !isValid && phoneNumber === ""
+                    ? "contact-section__input--error"
+                    : ""
+                }`}
+                name="phoneNumber"
                 value={phoneNumber}
                 placeholder="Phone Number"
                 onChange={(e) => {
                   setPhoneNumber(e.target.value);
                 }}
               />
-              <div className="contact-section__error-state">
-                <img
-                  src={error}
-                  alt="Exclamation point icon to indicate when text field is empty"
-                  className="contact-section__error-icon"
-                />
-                <span className="contact-section__error-command">
-                  This field is required
-                </span>
-              </div>
+              {!isValid && phoneNumber === "" ? (
+                <div className="contact-section__error-state">
+                  <img
+                    src={error}
+                    alt="Exclamation point icon to indicate when text field is empty"
+                    className="contact-section__error-icon"
+                  />
+                  <span className="contact-section__error-command">
+                    This field is required
+                  </span>
+                </div>
+              ) : (
+                ""
+              )}
             </div>
-            <div className="contact-section__email-wrapper">
-              <label className="contact-section__email-label">Email</label>
+            <div className="contact-section__wrapper">
+              <label className="contact-section__label">Email</label>
               <input
                 type="text"
-                className="contact-section__email-input"
+                className={`contact-section__input ${
+                  !isValid && email === ""
+                    ? "contact-section__input--error"
+                    : ""
+                }`}
                 name="email"
                 value={email}
                 placeholder="Email"
@@ -246,16 +297,20 @@ export default function NewWarehouse() {
                   setEmail(e.target.value);
                 }}
               />
-              <div className="contact-section__error-state">
-                <img
-                  src={error}
-                  alt="Exclamation point icon to indicate when text field is empty"
-                  className="contact-section__error-icon"
-                />
-                <span className="contact-section__error-command">
-                  This field is required
-                </span>
-              </div>
+              {!isValid && email === "" ? (
+                <div className="contact-section__error-state">
+                  <img
+                    src={error}
+                    alt="Exclamation point icon to indicate when text field is empty"
+                    className="contact-section__error-icon"
+                  />
+                  <span className="contact-section__error-command">
+                    This field is required
+                  </span>
+                </div>
+              ) : (
+                ""
+              )}
             </div>
           </div>
         </div>
