@@ -1,0 +1,172 @@
+@use '../../assets/styles/partials/colours' as *;
+@use '../../assets/styles/partials/fonts' as *;
+@use '../../assets/styles/partials/mixins' as *;
+
+.warehouseListItem {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    border-top: 1px $accent-colour solid;
+    padding: 1rem;
+
+    @include tablet {
+        padding: 1rem 2rem;
+        justify-content: flex-start;
+        border-top: none;
+        border-bottom: 1px $accent-colour solid;
+    }
+
+    &:hover {
+        background-color: rgba(46, 102, 229, 0.07);
+    
+    }
+
+    // For last element in the table
+    &--noBorder {
+
+        @include tablet{
+              border: none;
+        }
+    }
+
+    &__container {
+        width: 50%;
+
+        @include tablet {
+            display: flex;
+            align-items: center;
+        }
+
+        //Modifiers to give more granular control over container widths
+        &--first {
+            @include tablet{
+                width: 41%;
+            }
+
+            @include desktop {
+                width: 51%;
+            }
+        }
+
+        &--second {
+            @include tablet {
+                width: 49%;
+            }
+
+            @include desktop {
+                width: 43%;
+            }
+        }
+    }
+
+    &__info {
+        margin-bottom: 1rem;
+
+        @include tablet {
+            margin: 0;
+        }
+
+        //Modifiers to give more granular control over element widths
+        &--first {
+            @include tablet {
+                width: 58.5%;
+            }
+            @include desktop {
+                width: 49%;
+            }
+
+        }
+
+        &--second {
+            @include tablet {
+                width: 41.5%;
+            }
+            @include desktop {
+                width: 51%;
+            }
+        }
+
+        &--third {
+            @include tablet {
+                width: 39%;
+            }
+            @include desktop {
+                width: 44%;
+            }
+        }
+
+        &--fourth {
+            @include tablet {
+                width: 61%;
+            }
+            @include desktop {
+                width: 56%;
+            }
+        }
+    }
+
+    &__title {
+        color: $header-colour;
+        margin-bottom: .25rem;
+
+        @include tablet {
+            display: none;
+        }
+    }
+
+    &__nameWrapper {
+        display: flex;
+        justify-content: flex-start;
+    }
+
+    &__link {
+        text-decoration: none;
+        display: flex;
+
+        &:hover {
+            text-decoration: underline;
+        
+        }
+    }
+
+    &__name {
+        color: $button-colour;
+        padding-top: 0.2rem;
+        margin-right: 0.25rem;
+    }
+
+    &__detail {
+        font-size: .8125rem;
+        color: $global-text-colour;
+        padding-right: 1rem;
+        line-height: 1.25rem;
+
+        @include tablet {
+            line-height: 1.375rem;
+        }
+    }
+
+    &__icons {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+
+        @include tablet {
+            width: 10%;
+            justify-content: flex-end;
+        }
+
+        @include desktop {
+            width: 6%;
+        }
+    }
+
+    &__icon {
+        width: 1.5rem;
+
+        @include tablet {
+            margin-left: 1rem;
+        }
+    }
+}
