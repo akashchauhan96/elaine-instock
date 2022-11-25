@@ -53,7 +53,7 @@ export default function WarehouseInventoryItem({ warehouseInventory }) {
                     <Link>
                         <img className='warehouseInventory__icon' src={deleteIcon} alt='Delete Icon' />
                     </Link>
-                    <Link to={"/edit-warehouse"}>
+                    <Link to={`/inventory/${inventory.id}/edit`}>
                         <img className='warehouseInventory__icon' src={editIcon} alt='Edit Icon' />
                     </Link>
                 </div>
