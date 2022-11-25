@@ -2,7 +2,7 @@ import { Link, useNavigate } from "react-router-dom";
 import arrowBack from "../../assets/icons/arrow_back-24px.svg";
 import { useState } from "react";
 import "./NewWarehouse.scss";
-import { isEmail, isMobilePhone, isEmpty } from 'validator';
+import { isEmail, isMobilePhone} from 'validator';
 import error from "../../assets/icons/error-24px.svg";
 import axios from "axios";
 

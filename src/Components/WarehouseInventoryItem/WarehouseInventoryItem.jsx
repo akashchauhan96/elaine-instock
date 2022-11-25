@@ -17,7 +17,7 @@ export default function WarehouseInventoryItem({ warehouseInventory }) {
                     <div className='warehouseInventory__info warehouseInventory__info--first'>
                         <h4 className='warehouseInventory__title'>Inventory Item</h4>
                         <div className='warehouseInventory__nameWrapper'>
-                            <Link to="/inventory/:inventoryId" className='warehouseListItem__link'>
+                            <Link to={`/inventory/${inventory.id}`} className='warehouseListItem__link'>
                                 <h3 className='warehouseInventory__name'>{inventory.item_name}</h3>
                                 <img src={rightChevron} alt="Right Chevron Icon" />
                              </Link>
