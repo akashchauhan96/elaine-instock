@@ -18,20 +18,17 @@ function App() {
         <div className="main__background">
           <div className="main__content">
             <Routes>
-              {/* <Route path="/" element={<WarehouseList />} /> */}
-              {/* <Route path="/:id" element={<SelectedWarehouse />} /> */}
+              <Route path="/" element={<WarehouseList />} />
+              <Route
+                path="/warehouse/:warehouseId"
+                element={<SelectedWarehouse />}
+              />
               <Route path="/add-warehouse" element={<AddWarehouse />} />
               {/* <Route path="/edit-warehouse" element={<EditWarehouse />} />
-              <Route path="/inventory-list" element={<InventoryList />} />
-              <Route path="/inventory-item" element={<InventoryItem />} />
-              <Route
-                path="/edit-inventory-item"
-                element={<EditInventoryItem />}
-              />
-              <Route
-                path="/add-inventory-item"
-                element={<AddInventoryItem />}
-              /> */}
+                  <Route path="/inventory-list" element={<InventoryList />} />
+                  <Route path="/inventory-item" element={<InventoryItem />} />
+                  <Route path="/edit-inventory-item" element={<EditInventoryItem />} />
+                  <Route path="/add-inventory-item" element={<AddInventoryItem />} /> */}
             </Routes>
           </div>
         </div>
