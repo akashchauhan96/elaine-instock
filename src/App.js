@@ -23,7 +23,7 @@ function App() {
                   <Route path="/add-warehouse" element={<AddWarehouse />} />
                   <Route path="/edit-warehouse" element={<EditWarehouse />} />
                   <Route path="/inventory-list" element={<InventoryList />} />
-                  <Route path="/inventory-item" element={<InventoryItem />} />
+                  <Route path="/inventory/:inventoryId" element={<InventoryItem />} />
                   <Route path="/edit-inventory-item" element={<EditInventoryItem />} />
                   <Route path="/add-inventory-item" element={<AddInventoryItem />} />
                 </Routes>

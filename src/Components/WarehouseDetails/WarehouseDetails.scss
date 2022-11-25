@@ -87,9 +87,7 @@
         flex-direction: row;
         justify-content: space-between;
         flex-wrap: wrap;
-        padding: 3rem 2rem 0 0;
-        // i think a max-width here max the mobile view look a little nicer at wider sizes.
-        max-width: 31.5rem;
+        padding: 3rem 0 0 0;
 
         @include tablet {
             padding: 0 3rem 0 2.5rem;
