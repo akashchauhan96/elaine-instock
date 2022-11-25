@@ -2,6 +2,7 @@ import { Link, useNavigate } from "react-router-dom";
 import arrowBack from "../../assets/icons/arrow_back-24px.svg";
 import { useState } from "react";
 import "./NewWarehouse.scss";
+import {isEmail} from 'validator';
 import error from "../../assets/icons/error-24px.svg";
 import axios from "axios";
 
@@ -15,6 +16,7 @@ export default function NewWarehouse() {
   const [phoneNumber, setPhoneNumber] = useState("");
   const [email, setEmail] = useState("");
   const [isValid, setIsValid] = useState(true);
+  const [isValidEmail, setIsValidEmail] = useState(true);
 
   const navigate = useNavigate();
 
@@ -29,9 +31,13 @@ export default function NewWarehouse() {
       !contactName ||
       !position ||
       !phoneNumber ||
-      !email
-    ) {
+      isEmail(email) ) {
       setIsValid(false);
+      if (!isEmail(email)) {
+        setIsValidEmail(false);
+      } else {
+        setIsValidEmail(true);
+      }
       return;
     } else {
       const newWarehouse = {};
@@ -308,9 +314,10 @@ export default function NewWarehouse() {
                 placeholder="Email"
                 onChange={(e) => {
                   setEmail(e.target.value);
+                  setIsValidEmail(isEmail(e.target.value));
                 }}
               />
-              {!isValid && email === "" ? (
+              {!isValid && !isValidEmail ? (
                 <div className="contact-section__error-state">
                   <img
                     src={error}
@@ -318,7 +325,7 @@ export default function NewWarehouse() {
                     className="contact-section__error-icon"
                   />
                   <span className="contact-section__error-command">
-                    This field is required
+                    {email === "" ? "This field is required" : "A valid email is required"}
                   </span>
                 </div>
               ) : (
