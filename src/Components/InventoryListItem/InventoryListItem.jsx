@@ -19,7 +19,7 @@ function InventoryListItem({ inventory, isLastInventory }) {
                     <div className='inventoryListItem__nameWrapper'>
                         <Link className='inventoryListItem__link' to={`/inventory/${inventory.id}`}>
                             <h3 className='inventoryListItem__name'>{inventory.item_name}</h3>
-                            <img src={rightChevron} alt="Right Chevron Icon" />
+                            <img className='inventoryListItem__img' src={rightChevron} alt="Right Chevron Icon" />
                         </Link>
                     </div>
                 </div>

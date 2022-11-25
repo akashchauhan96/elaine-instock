@@ -135,6 +135,12 @@
         margin-right: 0.25rem;
     }
 
+    &__img {
+        @include tablet {
+            padding-top: 0.15rem;
+        }
+    }
+
     &__detail {
         font-size: .8125rem;
         color: $global-text-colour;
