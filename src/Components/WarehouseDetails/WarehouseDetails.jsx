@@ -14,7 +14,7 @@ export default function WarehouseDetails ( { warehousePageDetails } ) {
                 </Link>
                 <h1 className='warehouse__name' key={ warehousePageDetails.id }>{ warehousePageDetails.warehouse_name }</h1>
             </div>
-            <Link className="warehouse__edit" to={`/edit-warehouse/${warehousePageDetails.id}`}>
+            <Link className="warehouse__edit" to={`/warehouses/${warehousePageDetails.id}/edit`}>
                 <img className="warehouse__edit-icon" src={ editIcon } alt="Edit Warehouse" />
                 <p className="warehouse__edit-text">Edit</p>
             </Link>

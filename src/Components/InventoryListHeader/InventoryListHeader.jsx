@@ -8,7 +8,7 @@ function InventoryListHeader() {
             <h1 className='inventoryListHeader__title'>Inventory</h1>
             <div className='inventoryListHeader__container'>
                 <input className='inventoryListHeader__search' type="search" placeholder='Search...' />
-                <Link className='inventoryListHeader__link' to={"/add-warehouse"}>
+                <Link className='inventoryListHeader__link' to={"/inventory/add"}>
                     <div className='inventoryListHeader__button'>+ Add New Item</div>
                 </Link>
             </div>
