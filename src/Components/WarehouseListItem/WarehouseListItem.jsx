@@ -1,8 +1,8 @@
 import "./WarehouseListItem.scss";
 import deleteIcon from "../../assets/icons/delete_outline-24px.svg";
-import editIcon from "../../assets/icons/edit-24px.svg";
+import editIcon from "../../assets/icons/edit-24px-blue.svg";
 import rightChevron from "../../assets/icons/chevron_right-24px.svg";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import DeleteWH from "../DeleteWH/DeleteWH";
 import { useState } from "react";
 
@@ -13,11 +13,19 @@ function WarehouseListItem({
   isDeleted,
 }) {
   const [openModal, setOpenModal] = useState(false);
+  const navigateEditPage = useNavigate();
+  const handleEditClick = () => {
+    navigateEditPage(`/edit-warehouse/${warehouse.id}`);
+  };
+  console.log(warehouse);
 
   return (
     // Remove border of last warehouse in table
     <div
-      className={`warehouseListItem ${isLastWarehouse ? "warehouseListItem--noBorder" : "" }`}>
+      className={`warehouseListItem ${
+        isLastWarehouse ? "warehouseListItem--noBorder" : ""
+      }`}
+    >
       <div className="warehouseListItem__container warehouseListItem__container--first">
         <div className="warehouseListItem__info warehouseListItem__info--first">
           <h4 className="warehouseListItem__title">Warehouse</h4>
@@ -56,13 +64,12 @@ function WarehouseListItem({
           }}
         />
 
-        <Link to={"/edit-warehouse"}>
-          <img
-            className="warehouseListItem__icon"
-            src={editIcon}
-            alt="Edit Icon"
-          />
-        </Link>
+        <img
+          className="warehouseListItem__icon"
+          src={editIcon}
+          alt="Edit Icon"
+          onClick={handleEditClick}
+        />
       </div>
       {openModal && (
         <DeleteWH
