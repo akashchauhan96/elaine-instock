@@ -9,7 +9,7 @@ export default function WarehouseDetails ( { warehousePageDetails } ) {
         <div className='warehouse'>
         <div className='warehouse__header'>
             <div className='warehouse__title'>
-                <Link to="/">
+                <Link to="/warehouses">
                     <img className="warehouse__back-icon" src={ backArrow } alt="Go Back" />
                 </Link>
                 <h1 className='warehouse__name' key={ warehousePageDetails.id }>{ warehousePageDetails.warehouse_name }</h1>
