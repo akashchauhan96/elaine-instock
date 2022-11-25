@@ -24,7 +24,7 @@ export default function NewWarehouse() {
 
   const handleOnSubmit = (e) => {
     e.preventDefault();
-    //console.log(isMobilePhone(phoneNumber.toString(), ['en-CA']));
+    
     if (
       !warehouseName ||
       !streetAddress ||
@@ -299,9 +299,9 @@ export default function NewWarehouse() {
                     phoneArray.splice(7, 0, ') ');
                     setPhoneNumber(phoneArray.join(""));
                     return;
-                  } else if (e.target.value.toString().length >= 8 && !e.target.value.toString().includes(')')) {
+                  } else if (e.target.value.toString().length >= 9 && !e.target.value.toString().includes(') ')) {
                     const phoneArray = e.target.value.split('');
-                    phoneArray.splice(7, 0, ') ');
+                    phoneArray.splice(7, 1, ') ');
                     setPhoneNumber(phoneArray.join(""));
                     return;
                   }
