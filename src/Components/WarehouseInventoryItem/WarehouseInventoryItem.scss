@@ -69,7 +69,7 @@
         //Modifiers to give more granular control over element widths
         &--first {
             @include tablet {
-                width: 58.5%;
+                width: 90%;
             }
             @include desktop {
                 width: 49%;
@@ -79,7 +79,7 @@
 
         &--second {
             @include tablet {
-                width: 41.5%;
+                width: 50%;
             }
             @include desktop {
                 width: 51%;
@@ -88,7 +88,7 @@
 
         &--third {
             @include tablet {
-                width: 39%;
+                width: 85%;
             }
             @include desktop {
                 width: 44%;

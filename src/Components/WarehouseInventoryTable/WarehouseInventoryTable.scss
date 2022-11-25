@@ -25,7 +25,7 @@
 
         //Modifiers to give more granular control over element widths
         &--first {
-            width: 24%;
+            width: 18%;
 
             @include desktop {
                 width: 25%;
@@ -33,7 +33,7 @@
         }
 
         &--second {
-            width: 17%;
+            width: 15%;
 
             @include desktop {
                 width: 26%;
@@ -41,7 +41,7 @@
         }
 
         &--third {
-            width: 19%;
+            width: 20%;
 
             @include desktop {
                 width: 19%;
@@ -49,7 +49,7 @@
         }
 
         &--fourth {
-            width: 30%;
+            width: 20%;
 
             @include desktop {
                 width: 24%;

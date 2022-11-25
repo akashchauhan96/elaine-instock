@@ -40,8 +40,9 @@
 
         @include tablet {
             padding: 0 1rem;
-            border-radius: 1rem;
+            border-radius: 1.5rem;
             align-items: center;
+            height: 2.5rem;
         }
         
         &:hover {
@@ -52,8 +53,8 @@
     &__edit-icon {
 
         @include tablet {
-            width: 1rem;
-            height: 1rem;
+            width: 1.5rem;
+            height: 1.5rem;
         }
     }
 
@@ -62,7 +63,6 @@
 
         @include tablet {
         display: flex;
-        font-size: 0.875rem;
         padding: 0 0 0 0.5rem;
         color: $light-text-colour;
         }
@@ -90,10 +90,10 @@
         padding: 3rem 0 0 0;
 
         @include tablet {
-            padding: 0 3rem 0 2.5rem;
-            gap: 2.5rem;
+            padding: 0 3rem 0 2rem;
             border-left: 1px solid $accent-colour;
             max-width: none;
+            width: 60%;
         }
     }
 
