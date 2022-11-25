@@ -16,6 +16,13 @@
         border-bottom: 1px $accent-colour solid;
     }
 
+    &:nth-last-child(1) {
+        
+        @include tablet {
+        border: none;
+        }
+    }
+
     &:hover {
         background-color: rgba(46, 102, 229, 0.07);
     
