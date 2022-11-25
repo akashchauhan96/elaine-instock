@@ -40,7 +40,7 @@
         //Modifiers to give more granular control over container widths
         &--first {
             @include tablet{
-                width: 41%;
+                width: 45%;
             }
 
             @include desktop {
@@ -50,7 +50,7 @@
 
         &--second {
             @include tablet {
-                width: 49%;
+                width: 44%;
             }
 
             @include desktop {
@@ -69,7 +69,7 @@
         //Modifiers to give more granular control over element widths
         &--first {
             @include tablet {
-                width: 90%;
+                width: 70%;
             }
             @include desktop {
                 width: 49%;
@@ -79,7 +79,7 @@
 
         &--second {
             @include tablet {
-                width: 50%;
+                width: 51%;
             }
             @include desktop {
                 width: 51%;
@@ -88,7 +88,7 @@
 
         &--third {
             @include tablet {
-                width: 85%;
+                width: 95%;
             }
             @include desktop {
                 width: 44%;
@@ -100,7 +100,7 @@
 
             @include tablet {
                 margin: 0;
-                width: 61%;
+                width: 53.5%;
             }
             @include desktop {
                 width: 56%;
@@ -149,6 +149,7 @@
         }
     }
 
+
     &__icons {
         display: flex;
         justify-content: space-between;
@@ -175,7 +176,7 @@
 
     &__no-stock {
         color: $no-stock-colour;
-        background-color: rgba(201, 69, 21, 0.3);
+        background-color: rgba(201, 69, 21, 0.07);
         width: 6.9rem;
         padding-left: 0.75rem;
         border-radius: 1rem;
@@ -183,7 +184,7 @@
 
     &__in-stock {
         color: $instock-colour;
-        background-color: rgba(1, 132, 99,0.3);
+        background-color: rgba(1, 132, 99,0.07);
         width: 5.05rem;
         padding-left: 0.75rem;
         border-radius: 1rem;

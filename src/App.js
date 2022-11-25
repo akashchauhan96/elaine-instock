@@ -22,13 +22,8 @@ function App() {
                   <Route path="/warehouse/:warehouseId" element={<SelectedWarehouse />} />
                   <Route path="/add-warehouse" element={<AddWarehouse />} />
                   <Route path="/edit-warehouse" element={<EditWarehouse />} />
-<<<<<<< HEAD
-                  <Route path="/inventory-list" element={<InventoryList />} />
-                  <Route path="/inventory/:inventoryId" element={<InventoryItem />} />
-=======
                   <Route path="/inventory" element={<InventoryList />} />
                   <Route path="/inventory/:id" element={<InventoryItem />} />
->>>>>>> develop
                   <Route path="/edit-inventory-item" element={<EditInventoryItem />} />
                   <Route path="/add-inventory-item" element={<AddInventoryItem />} />
             </Routes>

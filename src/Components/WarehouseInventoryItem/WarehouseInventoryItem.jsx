@@ -25,7 +25,7 @@ export default function WarehouseInventoryItem({ warehouseInventory }) {
                     </div>
                     <div className='warehouseInventory__info warehouseInventory__info--second'>
                         <h4 className='warehouseInventory__title'>Category</h4>
-                        <p className='warehouseInventory__detail'>{inventory.category}</p>
+                        <p className='warehouseInventory__detail warehouseInventory__detail--table'>{inventory.category}</p>
                     </div>
                 </div>
                 <div className='warehouseInventory__container warehouseInventory__container--second'>

@@ -21,11 +21,12 @@
             align-items: center;
             text-transform: uppercase;
             color: $header-colour;
+            white-space: nowrap;
         }
 
         //Modifiers to give more granular control over element widths
         &--first {
-            width: 18%;
+            width: 18.5%;
 
             @include desktop {
                 width: 25%;
@@ -33,7 +34,7 @@
         }
 
         &--second {
-            width: 15%;
+            width: 12%;
 
             @include desktop {
                 width: 26%;
@@ -49,7 +50,7 @@
         }
 
         &--fourth {
-            width: 20%;
+            width: 9%;
 
             @include desktop {
                 width: 24%;
