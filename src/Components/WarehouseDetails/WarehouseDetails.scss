@@ -89,7 +89,7 @@
         flex-wrap: wrap;
         padding: 3rem 2rem 0 0;
         // i think a max-width here max the mobile view look a little nicer at wider sizes.
-        max-width: 33rem;
+        max-width: 31.5rem;
 
         @include tablet {
             padding: 0 3rem 0 2.5rem;
@@ -99,5 +99,8 @@
         }
     }
 
+    &__details--twin {
+        width: 50%;
+    }
 
 }

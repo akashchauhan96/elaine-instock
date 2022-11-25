@@ -6,24 +6,24 @@ export default function WarehouseInventory() {
     
     return (
     <>
-            <div className='warehouseListTable'>
-            <div className='warehouseListTable__column warehouseListTable__column--first'>
-                <h4>Warehouse</h4>
+            <div className='warehouseInventoryTable'>
+            <div className='warehouseInventoryTable__column warehouseInventoryTable__column--first'>
+                <h4>Inventory Item</h4>
                 <img src={sortIcon} alt="Sort Icon" />
             </div>
-            <div className='warehouseListTable__column warehouseListTable__column--second'>
-                <h4>Address</h4>
+            <div className='warehouseInventoryTable__column warehouseInventoryTable__column--second'>
+                <h4>Category</h4>
                 <img src={sortIcon} alt="Sort Icon" />
             </div>
-            <div className='warehouseListTable__column warehouseListTable__column--third'>
-                <h4>Contact Name</h4>
+            <div className='warehouseInventoryTable__column warehouseInventoryTable__column--third'>
+                <h4>Status</h4>
                 <img src={sortIcon} alt="Sort Icon" />
             </div>
-            <div className='warehouseListTable__column warehouseListTable__column--fourth'>
-                <h4>Contact Information</h4>
+            <div className='warehouseInventoryTable__column warehouseInventoryTable__column--fourth'>
+                <h4>Quantity</h4>
                 <img src={sortIcon} alt="Sort Icon" />
             </div>
-            <div className='warehouseListTable__column warehouseListTable__column--fifth'>
+            <div className='warehouseInventoryTable__column warehouseInventoryTable__column--fifth'>
                 <h4>Actions</h4>
             </div>
             </div>

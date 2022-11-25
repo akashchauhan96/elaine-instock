@@ -2,7 +2,7 @@
 @use '../../styles/partials/fonts' as *;
 @use '../../styles/partials/mixins' as *;
 
-.warehouseListTable {
+.warehouseInventoryTable {
     display: none;
 
     @include tablet {

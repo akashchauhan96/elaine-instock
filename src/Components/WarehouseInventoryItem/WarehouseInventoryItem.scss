@@ -2,12 +2,12 @@
 @use '../../styles/partials/fonts' as *;
 @use '../../styles/partials/mixins' as *;
 
-.warehouseListItem {
+.warehouseInventory {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
     border-top: 1px $accent-colour solid;
-    padding: 1rem;
+    padding: 1.5rem;
 
     @include tablet {
         padding: 1rem 2rem;
@@ -96,7 +96,10 @@
         }
 
         &--fourth {
+            margin: 1.4rem 0 0 0;
+
             @include tablet {
+                margin: 0;
                 width: 61%;
             }
             @include desktop {
@@ -168,5 +171,21 @@
         @include tablet {
             margin-left: 1rem;
         }
+    }
+
+    &__no-stock {
+        color: $no-stock-colour;
+        background-color: rgba(201, 69, 21, 0.3);
+        width: 6.9rem;
+        padding-left: 0.75rem;
+        border-radius: 1rem;
+    }
+
+    &__in-stock {
+        color: $instock-colour;
+        background-color: rgba(1, 132, 99,0.3);
+        width: 5.05rem;
+        padding-left: 0.75rem;
+        border-radius: 1rem;
     }
 }
