@@ -1,0 +1,102 @@
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/colours" as *;
+@use "../../styles/partials/breakpoints" as *;
+
+.warehouse {
+
+    &__header {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0 1.5rem 1rem 1.5rem;
+
+        @include tablet {
+            padding: 0 2rem 2rem 2rem;
+        }
+    }
+
+    &__title {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+    }
+
+    &__back-icon {
+        padding: 0.3rem 0 0 0;
+    }
+
+    &__name {
+        padding: 0 0 0 0.5rem;
+    }
+
+    &__edit {
+        text-decoration: none;
+        display: flex;
+        flex-direction: row;
+        background-color: $button-colour;
+        padding: 0.5rem;
+        border-radius: 1.5rem;
+
+        @include tablet {
+            padding: 0 1rem;
+            border-radius: 1rem;
+            align-items: center;
+        }
+        
+        &:hover {
+            background-color: $dark-background-colour;
+        }
+    }
+
+    &__edit-icon {
+
+        @include tablet {
+            width: 1rem;
+            height: 1rem;
+        }
+    }
+
+    &__edit-text {
+        display: none;
+
+        @include tablet {
+        display: flex;
+        font-size: 0.875rem;
+        padding: 0 0 0 0.5rem;
+        color: $light-text-colour;
+        }
+    }
+
+    &__details-container {
+        display: flex;
+        flex-direction: column;
+        border-top: 1px solid $accent-colour;
+        padding: 1.5rem;
+
+        @include tablet {
+            flex-direction: row;
+            justify-content: space-between;
+            padding: 2rem;
+        }
+    }
+
+    &__more-details {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        padding: 3rem 2rem 0 0;
+        // i think a max-width here max the mobile view look a little nicer at wider sizes.
+        max-width: 33rem;
+
+        @include tablet {
+            padding: 0 3rem 0 2.5rem;
+            gap: 2.5rem;
+            border-left: 1px solid $accent-colour;
+            max-width: none;
+        }
+    }
+
+
+}

@@ -1,6 +1,7 @@
-@use "../../styles/partials/colours" as *;
-@use "../../styles/partials/fonts" as *;
-@use "../../styles/partials/mixins" as *;
+@use '../../styles/partials/colours' as *;
+@use '../../styles/partials/fonts' as *;
+@use '../../styles/partials/mixins' as *;
+
 
 .warehouseListTable {
   display: none;
