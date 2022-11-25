@@ -1,88 +1,87 @@
-@use '../../assets/styles/partials/colours' as *;
-@use '../../assets/styles/partials/fonts' as *;
-@use '../../assets/styles/partials/mixins' as *;
+@use "../../styles/partials/colours" as *;
+@use "../../styles/partials/fonts" as *;
+@use "../../styles/partials/mixins" as *;
 
 .warehouseListHeader {
-    padding: 0 1.5rem 1rem 1.5rem;
-    display: flex;
-    flex-direction: column;
+  padding: 0 1.5rem 1rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+
+  @include tablet {
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 0 2rem 1.5rem 2rem;
+  }
+
+  &__title {
+    margin: 0 0 1.5rem 0;
 
     @include tablet {
-        flex-direction: row;
-        justify-content: space-between;
-        padding: 0 2rem 1.5rem 2rem;
+      margin: 0;
+    }
+  }
+
+  &__container {
+    @include tablet {
+      display: flex;
+      justify-content: flex-end;
+      width: 65%;
+      max-width: 30rem;
+    }
+  }
+
+  &__search {
+    background-image: url("../../assets/icons/search-24px.svg");
+    background-repeat: no-repeat;
+    background-position: right 1rem center;
+    width: 100%;
+    height: 2.25rem;
+    border-radius: 1.25rem;
+    padding: 0 1rem;
+    border: 1px $accent-colour solid;
+    margin-bottom: 1rem;
+
+    &::placeholder {
+      color: $header-colour;
     }
 
-    &__title {
-        margin: 0 0 1.5rem 0;
-
-        @include tablet {
-            margin: 0;
-        }
+    &:focus {
+      outline: none;
+      border: 1px $button-colour solid;
     }
 
-    &__container {
+    @include tablet {
+      height: 2.375rem;
+      margin-bottom: 0;
+    }
+  }
 
-        @include tablet {
-            display: flex;
-            justify-content: flex-end;
-            width: 65%;
-            max-width: 30rem;
-        }
+  &__link {
+    width: 100%;
+    text-decoration: none;
+
+    @include tablet {
+      max-width: 12rem;
+      margin-left: 1rem;
+    }
+  }
+
+  &__button {
+    background-color: $button-colour;
+    color: $light-text-colour;
+    font-weight: 700;
+    text-align: center;
+    height: 2.25rem;
+    padding: 0.35rem 0;
+    border-radius: 1.25rem;
+    border: none;
+
+    @include tablet {
+      height: 2.375rem;
     }
 
-    &__search {
-        background-image: url('../../assets/icons/search-24px.svg');
-        background-repeat: no-repeat;
-        background-position: right 1rem center;
-        width: 100%;
-        height: 2.25rem;
-        border-radius: 1.25rem;
-        padding: 0 1rem;
-        border: 1px $accent-colour solid;
-        margin-bottom: 1rem;
-
-        &::placeholder {
-            color: $header-colour;
-        }
-
-        &:focus {
-            outline: none;
-            border: 1px $button-colour solid;
-        }
-
-        @include tablet {
-            height: 2.375rem;
-            margin-bottom: 0;
-        }
+    &:hover {
+      background-color: $dark-background-colour;
     }
-
-    &__link {
-        width: 100%;
-        text-decoration: none;
-
-        @include tablet {
-            max-width: 12rem;
-            margin-left: 1rem;
-        }
-    }
-
-    &__button {
-        background-color: $button-colour;
-        color: $light-text-colour;
-        font-weight: 700;
-        text-align: center;
-        height: 2.25rem;
-        padding: 0.35rem 0;
-        border-radius: 1.25rem;
-        border: none;
-
-        @include tablet {
-            height: 2.375rem;
-        }
-
-        &:hover {
-            background-color: $dark-background-colour;
-        }
-    }
+  }
 }

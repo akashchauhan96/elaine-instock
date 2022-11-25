@@ -5,16 +5,16 @@
 // this is the regular (not bold) font - weight 400
 @font-face {
   font-family: "Trillium";
-  src: url(../../fonts/TitilliumWeb-Regular.woff2) format("woff2");
-  src: url(../../fonts/TitilliumWeb-Regular.woff) format("woff"); /*just in case woff2 isn't compatible*/
+  src: url(../../assets/fonts/TitilliumWeb-Regular.woff2) format("woff2");
+  src: url(../../assets/fonts/TitilliumWeb-Regular.woff) format("woff"); /*just in case woff2 isn't compatible*/
   font-weight: 400;
 }
 
 // this is the bold font - weight 600
 @font-face {
   font-family: "Trillium";
-  src: url(../../fonts/TitilliumWeb-SemiBold.woff2) format("woff2");
-  src: url(../../fonts/TitilliumWeb-SemiBold.woff) format("woff"); /*just in case woff2 isn't compatible*/
+  src: url(../../assets/fonts/TitilliumWeb-SemiBold.woff2) format("woff2");
+  src: url(../../assets/fonts/TitilliumWeb-SemiBold.woff) format("woff"); /*just in case woff2 isn't compatible*/
   font-weight: 600;
 }
 
