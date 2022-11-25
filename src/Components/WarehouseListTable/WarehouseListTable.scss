@@ -1,68 +1,71 @@
 @use '../../styles/partials/colours' as *;
 @use '../../styles/partials/fonts' as *;
 @use '../../styles/partials/mixins' as *;
+<<<<<<< HEAD
+=======
+
+>>>>>>> develop
 
 .warehouseListTable {
-    display: none;
+  display: none;
 
+  @include tablet {
+    padding: 0 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: $light-background-colour;
+    height: 2.5rem;
+  }
+
+  &__column {
     @include tablet {
-        padding: 0 2rem;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        background-color: $light-background-colour;
-        height: 2.5rem;
+      display: flex;
+      align-items: center;
+      text-transform: uppercase;
+      color: $header-colour;
     }
 
-    &__column {
+    //Modifiers to give more granular control over element widths
+    &--first {
+      width: 24%;
 
-        @include tablet {
-            display: flex;
-            align-items: center;
-            text-transform: uppercase;
-            color: $header-colour;
-        }
-
-        //Modifiers to give more granular control over element widths
-        &--first {
-            width: 24%;
-
-            @include desktop {
-                width: 25%;
-            }
-        }
-
-        &--second {
-            width: 17%;
-
-            @include desktop {
-                width: 26%;
-            }
-        }
-
-        &--third {
-            width: 19%;
-
-            @include desktop {
-                width: 19%;
-            }
-        }
-
-        &--fourth {
-            width: 30%;
-
-            @include desktop {
-                width: 24%;
-            }
-        }
-
-        &--fifth {
-            justify-content: flex-end;
-            width: 10%;
-
-            @include desktop {
-                width: 6%;
-            }
-        }
+      @include desktop {
+        width: 25%;
+      }
     }
+
+    &--second {
+      width: 17%;
+
+      @include desktop {
+        width: 26%;
+      }
+    }
+
+    &--third {
+      width: 19%;
+
+      @include desktop {
+        width: 19%;
+      }
+    }
+
+    &--fourth {
+      width: 30%;
+
+      @include desktop {
+        width: 24%;
+      }
+    }
+
+    &--fifth {
+      justify-content: flex-end;
+      width: 10%;
+
+      @include desktop {
+        width: 6%;
+      }
+    }
+  }
 }
