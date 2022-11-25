@@ -22,15 +22,16 @@ export default function WarehouseDetails ( { warehousePageDetails } ) {
             <div className='warehouse__details-container'>
                 <div className='warehouse__details'>
                     <h4 className='warehouse__detail'>Warehouse Address:</h4>
-                    <p className='warehouse__info'>{ warehousePageDetails.address }, { warehousePageDetails.city }, { warehousePageDetails.country }</p>
+                    <p className='warehouse__info'>{ warehousePageDetails.address },</p>
+                    <p className='warehouse__info'>{ warehousePageDetails.city }, { warehousePageDetails.country }</p>
                 </div>
                 <div className='warehouse__more-details'>
-                    <div className='warehouse__details'>
+                    <div className='warehouse__details warehouse__details--twin'>
                         <h4 className='warehouse__detail'>Contact Name:</h4>
                         <p className='warehouse__info'>{ warehousePageDetails.contact_name }</p>
                         <p className='warehouse__info'>{ warehousePageDetails.contact_position }</p>
                     </div>
-                    <div className='warehouse__details'>
+                    <div className='warehouse__details warehouse__details--twin'>
                         <h4 className='warehouse__detail'>Contact Information:</h4>
                         <p className='warehouse__info'>{ warehousePageDetails.contact_phone }</p>
                         <p className='warehouse__info'>{ warehousePageDetails.contact_email }</p>                       

@@ -1,0 +1,69 @@
+@use '../../styles/partials/colours' as *;
+@use '../../styles/partials/fonts' as *;
+@use '../../styles/partials/mixins' as *;
+
+.warehouseInventoryTable {
+    display: none;
+
+    @include tablet {
+        padding: 0 2rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background-color: $light-background-colour;
+        height: 2.5rem;
+    }
+
+    &__column {
+
+        @include tablet {
+            display: flex;
+            align-items: center;
+            text-transform: uppercase;
+            color: $header-colour;
+            white-space: nowrap;
+        }
+
+        //Modifiers to give more granular control over element widths
+        &--first {
+            width: 18.5%;
+
+            @include desktop {
+                width: 25%;
+            }
+        }
+
+        &--second {
+            width: 12%;
+
+            @include desktop {
+                width: 26%;
+            }
+        }
+
+        &--third {
+            width: 20%;
+
+            @include desktop {
+                width: 19%;
+            }
+        }
+
+        &--fourth {
+            width: 9%;
+
+            @include desktop {
+                width: 24%;
+            }
+        }
+
+        &--fifth {
+            justify-content: flex-end;
+            width: 10%;
+
+            @include desktop {
+                width: 6%;
+            }
+        }
+    }
+}
