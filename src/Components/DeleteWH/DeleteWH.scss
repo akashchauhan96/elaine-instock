@@ -3,23 +3,27 @@
 @use "../../styles/partials/colours" as *;
 
 .delete {
-  background-color: #fff;
+  background-color: $light-text-colour;
   margin: 0;
+  width: 100vw;
+  min-height: 37.5rem;
+  height: 100vh;
 
-  align-items: center;
-  justify-content: center;
   @include tablet {
+    min-height: 0;
+    height: auto;
     width: 90%;
     margin: auto;
     border-radius: 5px;
-    margin-top: 12rem;
+    margin-top: 12.5rem;
   }
 
   @include desktop {
-    width: 50%;
+    width: 55%;
   }
 
   &__darkBG {
+    overflow: hidden;
     background-color: rgba(1, 8, 34, 0.7);
     width: 100vw;
     height: 100vh;
@@ -90,13 +94,13 @@
   }
 
   &__button-cancel {
-    background-color: #fff;
+    background-color: $light-text-colour;
     border: 1px solid #bdc5d5;
   }
 
   &__button-delete {
     background-color: $no-stock-colour;
-    color: #fff;
+    color: $light-text-colour;
     border: none;
   }
 }

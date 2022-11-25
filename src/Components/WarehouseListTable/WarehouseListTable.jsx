@@ -5,8 +5,9 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import { URL } from "../../utils/util";
 
-function WarehouseListTable({ openModal, setOpenModal }) {
+function WarehouseListTable() {
   const [warehouses, setWarehouses] = useState(null);
+  const [isDeleted, setIsDeleted] = useState(false);
 
   useEffect(() => {
     axios
@@ -19,7 +20,7 @@ function WarehouseListTable({ openModal, setOpenModal }) {
           `An error occured while trying to access the warehouses: ${err}`
         );
       });
-  }, []);
+  }, [isDeleted]);
 
   if (!warehouses) {
     return <h1>Loading...</h1>;
@@ -55,6 +56,8 @@ function WarehouseListTable({ openModal, setOpenModal }) {
           <WarehouseListItem
             key={warehouse.id}
             warehouse={warehouse}
+            setIsDeleted={setIsDeleted}
+            isDeleted={isDeleted}
             isLastWarehouse={
               warehouse.id === warehouses[warehouses.length - 1].id
                 ? true

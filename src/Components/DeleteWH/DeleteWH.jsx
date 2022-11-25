@@ -1,19 +1,24 @@
 import "./DeleteWH.scss";
 import CloseIcon from "../../assets/icons/close-24px.svg";
 import axios from "axios";
-import { useEffect, useState } from "react";
 
-function DeleteWH({ setOpenModal, warehouse }) {
+function DeleteWH({ setOpenModal, warehouse, setIsDeleted, isDeleted }) {
   const urlWarehouse = `http://localhost:8080/warehouse/${warehouse.id}`;
+
   console.log(warehouse);
   const handleDeleteWarehouse = (event) => {
-    axios.delete(`${urlWarehouse}`).catch((error) => {
-      console.log(error);
-    });
+    axios
+      .delete(`${urlWarehouse}`)
+      .then(() => {
+        setIsDeleted(!isDeleted);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   };
   return (
     <div
-      className="delete__darkBG delete__centered"
+      className="delete__darkBG delete__centered "
       onClick={() => setOpenModal(false)}
     >
       <div>

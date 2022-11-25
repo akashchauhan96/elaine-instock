@@ -6,8 +6,14 @@ import { Link } from "react-router-dom";
 import DeleteWH from "../DeleteWH/DeleteWH";
 import { useState } from "react";
 
-function WarehouseListItem({ warehouse, isLastWarehouse }) {
+function WarehouseListItem({
+  warehouse,
+  isLastWarehouse,
+  setIsDeleted,
+  isDeleted,
+}) {
   const [openModal, setOpenModal] = useState(false);
+
   return (
     // Remove border of last warehouse in table
     <div
@@ -64,7 +70,12 @@ function WarehouseListItem({ warehouse, isLastWarehouse }) {
         </Link>
       </div>
       {openModal && (
-        <DeleteWH setOpenModal={setOpenModal} warehouse={warehouse} />
+        <DeleteWH
+          setOpenModal={setOpenModal}
+          warehouse={warehouse}
+          setIsDeleted={setIsDeleted}
+          isDeleted={isDeleted}
+        />
       )}
     </div>
   );
