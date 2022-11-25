@@ -1,12 +1,9 @@
 import "./Header.scss";
 import Logo from "../../assets/images/InStock-Logo_2x.png";
-import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 
 function Header() {
   const navigate = useNavigate();
-  const [warehouseActive, setWarehouseActive] = useState(true);
-  const [inventoryActive, setInventoryActive] = useState(false);
 
   return (
     <header className="header">
@@ -17,32 +14,13 @@ function Header() {
           alt="intock logo"
           className="header__logo"
         />
-
         <div className="header__nav">
-          <div
-            className={`header__nav-item ${
-              warehouseActive ? "header__nav-item--active" : ""
-            }`}
-            onClick={() => {
-              navigate("/");
-              setWarehouseActive(!warehouseActive);
-              setInventoryActive(!inventoryActive);
-            }}
-          >
-            Warehouses
-          </div>
-          <div
-            className={`header__nav-item ${
-              inventoryActive ? "header__nav-item--active" : ""
-            }`}
-            onClick={() => {
-              navigate("/inventory");
-              setInventoryActive(!inventoryActive);
-              setWarehouseActive(!warehouseActive);
-            }}
-          >
-            Inventory
-          </div>
+        <NavLink className={({isActive}) => 
+           `header__nav-item ${isActive ? "header__nav-item--active" : ""}`
+        } to={'/warehouses'} >Warehouses</NavLink>
+        <NavLink className={({isActive}) => 
+          `header__nav-item ${isActive ? "header__nav-item--active" : ""}`
+        } to={'/inventory'}>Inventory</NavLink>
         </div>
       </div>
     </header>
