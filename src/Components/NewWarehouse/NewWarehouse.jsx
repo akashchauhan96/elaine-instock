@@ -36,18 +36,20 @@ export default function NewWarehouse() {
       return;
     } else {
       const newWarehouse = {};
-      newWarehouse.warehouseName = e.target.warehouseName.value;
+      newWarehouse.warehouse_name = e.target.warehouseName.value;
       newWarehouse.address = e.target.streetAddress.value;
       newWarehouse.city = e.target.city.value;
       newWarehouse.country = e.target.country.value;
-      newWarehouse.contactName = e.target.contactName.value;
-      newWarehouse.position = e.target.position.value;
-      newWarehouse.phoneNumber = e.target.phoneNumber.value;
-      newWarehouse.email = e.target.email.value;
+      newWarehouse.contact_name = e.target.contactName.value;
+      newWarehouse.contact_position = e.target.position.value;
+      newWarehouse.contact_phone = e.target.phoneNumber.value;
+      newWarehouse.contact_email = e.target.email.value;
       setIsValid(true);
 
+      console.log(newWarehouse);
+
       axios
-        .post(`/`, newWarehouse)
+        .post(`http://localhost:8080/warehouse`, newWarehouse)
         .then(() => {
           navigate(`/`);
         })
@@ -60,7 +62,7 @@ export default function NewWarehouse() {
   return (
     <>
       <div className="new-warehouse__title-wrapper">
-        <Link to="#" className="new-warehouse__back-link">
+        <Link to="/" className="new-warehouse__back-link">
           <img
             className="new-warehouse__back-button"
             src={arrowBack}
