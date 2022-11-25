@@ -1,3 +1,5 @@
-function AddWarehouse() {}
+import NewWarehouse from "../../Components/NewWarehouse/NewWarehouse.jsx";
 
-export default AddWarehouse;
+export default function AddWarehouse() {
+  return <NewWarehouse />;
+}
