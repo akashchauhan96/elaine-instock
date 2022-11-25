@@ -1,6 +1,6 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-// import WarehouseList from "./pages/WarehouseList/WarehouseList";
-// import SelectedWarehouse from "./pages/SelectedWarehouse/SelectedWarehouse";
+import WarehouseList from "./pages/WarehouseList/WarehouseList";
+import SelectedWarehouse from "./pages/SelectedWarehouse/SelectedWarehouse";
 import AddWarehouse from "./pages/AddWarehouse/AddWarehouse";
 import EditWarehouse from "./pages/EditWarehouse/EditWarehouse";
 import InventoryList from "./pages/InventoryList/InventoryList";

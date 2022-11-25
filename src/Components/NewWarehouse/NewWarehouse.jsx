@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import "./NewWarehouse.scss";
 import error from "../../assets/icons/error-24px.svg";
 import validator from "validator";
+import axios from "axios";
 
 export default function NewWarehouse() {
   const [warehouseName, setWarehouseName] = useState("");
@@ -15,6 +16,8 @@ export default function NewWarehouse() {
   const [phoneNumber, setPhoneNumber] = useState("");
   const [email, setEmail] = useState("");
   const [isValid, setIsValid] = useState(true);
+
+  const navigate = useNavigate();
 
   const handleOnSubmit = (e) => {
     e.preventDefault();
@@ -42,6 +45,15 @@ export default function NewWarehouse() {
       newWarehouse.phoneNumber = e.target.phoneNumber.value;
       newWarehouse.email = e.target.email.value;
       setIsValid(true);
+
+      axios
+        .post(`/`, newWarehouse)
+        .then(() => {
+          navigate(`/`);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
     }
   };
 
