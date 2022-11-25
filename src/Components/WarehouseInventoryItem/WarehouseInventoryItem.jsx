@@ -2,9 +2,19 @@ import '../WarehouseInventoryItem/WarehouseInventoryItem.scss';
 import deleteIcon from '../../assets/icons/delete_outline-24px.svg';
 import editIcon from '../../assets/icons/edit-24px-blue.svg';
 import rightChevron from '../../assets/icons/chevron_right-24px.svg';
+import NoInventory from '../NoInventory/NoInventory';
 import { Link } from 'react-router-dom';
 
 export default function WarehouseInventoryItem({ warehouseInventory }) {
+
+    if (!warehouseInventory) {
+        return;
+    }
+
+    if (warehouseInventory.length === 0) {
+        return <NoInventory />
+    }
+
 
     return (
         <>
