@@ -1,6 +1,6 @@
 import WarehouseListHeader from "../../Components/WarehouseListHeader/WarehouseListHeader";
 import WarehouseListTable from "../../Components/WarehouseListTable/WarehouseListTable";
-
+import "./WarehouseList.scss";
 
 function WarehouseList() {
   return (
@@ -9,6 +9,5 @@ function WarehouseList() {
       <WarehouseListTable />
     </>
   );
-
 }
 export default WarehouseList;
