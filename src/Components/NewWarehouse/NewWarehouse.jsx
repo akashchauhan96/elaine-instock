@@ -3,7 +3,7 @@ import arrowBack from "../../assets/icons/arrow_back-24px.svg";
 import { useState, useEffect } from "react";
 import "./NewWarehouse.scss";
 import error from "../../assets/icons/error-24px.svg";
-import validator from "validator";
+//import validator from "validator";
 import axios from "axios";
 
 export default function NewWarehouse() {

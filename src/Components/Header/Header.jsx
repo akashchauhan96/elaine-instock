@@ -36,7 +36,7 @@ function Header() {
               inventoryActive ? "header__nav-item--active" : ""
             }`}
             onClick={() => {
-              navigate("/inventory-list");
+              navigate("/inventory");
               setInventoryActive(!inventoryActive);
               setWarehouseActive(!warehouseActive);
             }}
