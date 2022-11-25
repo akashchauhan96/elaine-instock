@@ -15,7 +15,7 @@ function WarehouseListItem({ warehouse, isLastWarehouse }) {
                     <div className='warehouseListItem__nameWrapper'>
                         <Link className='warehouseListItem__link' to={`/warehouse/${warehouse.id}`}>
                             <h3 className='warehouseListItem__name'>{warehouse.warehouse_name}</h3>
-                            <img src={rightChevron} alt="Right Chevron Icon" />
+                            <img className='warehouseListItem__img' src={rightChevron} alt="Right Chevron Icon" />
                         </Link>
                     </div>
                 </div>
