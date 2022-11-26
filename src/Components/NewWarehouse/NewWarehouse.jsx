@@ -2,7 +2,7 @@ import { Link, useNavigate } from "react-router-dom";
 import arrowBack from "../../assets/icons/arrow_back-24px.svg";
 import { useState } from "react";
 import "./NewWarehouse.scss";
-import { isEmail, isMobilePhone} from 'validator';
+import { isEmail, isMobilePhone, isEmpty } from 'validator';
 import error from "../../assets/icons/error-24px.svg";
 import axios from "axios";
 
@@ -24,17 +24,18 @@ export default function NewWarehouse() {
 
   const handleOnSubmit = (e) => {
     e.preventDefault();
-    
+
+    //Form validation upon submit
     if (
-      !warehouseName ||
-      !streetAddress ||
-      !city ||
-      !country ||
-      !contactName ||
-      !position ||
-      !phoneNumber ||
-      isMobilePhone(phoneNumber) ||
-      isEmail(email)) {
+      isEmpty(warehouseName, {ignore_whitespace:true}) ||
+      isEmpty(streetAddress, {ignore_whitespace:true}) ||
+      isEmpty(city, {ignore_whitespace:true}) ||
+      isEmpty(country, {ignore_whitespace:true}) ||
+      isEmpty(contactName, {ignore_whitespace:true}) ||
+      isEmpty(position, {ignore_whitespace:true}) ||
+      isEmpty(phoneNumber, {ignore_whitespace:true}) ||
+      !isMobilePhone(phoneNumber) ||
+      !isEmail(email)) {
       setIsValid(false);
       if (!isEmail(email)) {
         setIsValidEmail(false);
@@ -92,7 +93,7 @@ export default function NewWarehouse() {
               <label className="warehouse-section__label">Warehouse Name</label>
               <input
                 type="text"
-                className={`warehouse-section__input ${!isValid && warehouseName === ""
+                className={`warehouse-section__input ${!isValid && isEmpty(warehouseName, {ignore_whitespace:true})
                     ? "warehouse-section__input--error"
                     : ""
                   }`}
@@ -103,7 +104,7 @@ export default function NewWarehouse() {
                   setWarehouseName(e.target.value);
                 }}
               />
-              {!isValid && warehouseName === "" ? (
+              {!isValid && isEmpty(warehouseName, {ignore_whitespace:true}) ? (
                 <div className="warehouse-section__error-state">
                   <img
                     src={error}
@@ -122,7 +123,7 @@ export default function NewWarehouse() {
               <label className="warehouse-section__label">Street Address</label>
               <input
                 type="text"
-                className={`warehouse-section__input ${!isValid && streetAddress === ""
+                className={`warehouse-section__input ${!isValid && isEmpty(streetAddress, {ignore_whitespace:true})
                     ? "warehouse-section__input--error"
                     : ""
                   }`}
@@ -133,7 +134,7 @@ export default function NewWarehouse() {
                   setStreetAddress(e.target.value);
                 }}
               />
-              {!isValid && streetAddress === "" ? (
+              {!isValid && isEmpty(streetAddress, {ignore_whitespace:true}) ? (
                 <div className="warehouse-section__error-state">
                   <img
                     src={error}
@@ -152,7 +153,7 @@ export default function NewWarehouse() {
               <label className="warehouse-section__label">City</label>
               <input
                 type="text"
-                className={`warehouse-section__input ${!isValid && city === ""
+                className={`warehouse-section__input ${!isValid && isEmpty(city, {ignore_whitespace:true})
                     ? "warehouse-section__input--error"
                     : ""
                   }`}
@@ -163,7 +164,7 @@ export default function NewWarehouse() {
                   setCity(e.target.value);
                 }}
               />
-              {!isValid && city === "" ? (
+              {!isValid && isEmpty(city, {ignore_whitespace:true}) ? (
                 <div className="warehouse-section__error-state">
                   <img
                     src={error}
@@ -182,7 +183,7 @@ export default function NewWarehouse() {
               <label className="warehouse-section__label">Country</label>
               <input
                 type="text"
-                className={`warehouse-section__input ${!isValid && country === ""
+                className={`warehouse-section__input ${!isValid && isEmpty(country, {ignore_whitespace:true})
                     ? "warehouse-section__input--error"
                     : ""
                   }`}
@@ -193,7 +194,7 @@ export default function NewWarehouse() {
                   setCountry(e.target.value);
                 }}
               />
-              {!isValid && country === "" ? (
+              {!isValid && isEmpty(country, {ignore_whitespace:true}) ? (
                 <div className="warehouse-section__error-state">
                   <img
                     src={error}
@@ -215,7 +216,7 @@ export default function NewWarehouse() {
               <label className="contact-section__label">Contact Name</label>
               <input
                 type="text"
-                className={`contact-section__input ${!isValid && contactName === ""
+                className={`contact-section__input ${!isValid && isEmpty(contactName, {ignore_whitespace:true})
                     ? "contact-section__input--error"
                     : ""
                   }`}
@@ -226,7 +227,7 @@ export default function NewWarehouse() {
                   setContactName(e.target.value);
                 }}
               />
-              {!isValid && contactName === "" ? (
+              {!isValid && isEmpty(contactName, {ignore_whitespace:true}) ? (
                 <div className="contact-section__error-state">
                   <img
                     src={error}
@@ -245,7 +246,7 @@ export default function NewWarehouse() {
               <label className="contact-section__label">Position</label>
               <input
                 type="text"
-                className={`contact-section__input ${!isValid && position === ""
+                className={`contact-section__input ${!isValid && isEmpty(position, {ignore_whitespace:true}) 
                     ? "contact-section__input--error"
                     : ""
                   }`}
@@ -256,7 +257,7 @@ export default function NewWarehouse() {
                   setPosition(e.target.value);
                 }}
               />
-              {!isValid && position === "" ? (
+              {!isValid && isEmpty(position, {ignore_whitespace:true})  ? (
                 <div className="contact-section__error-state">
                   <img
                     src={error}
@@ -275,7 +276,7 @@ export default function NewWarehouse() {
               <label className="contact-section__label">Phone Number</label>
               <input
                 type="text"
-                className={`contact-section__input ${!isValid && phoneNumber === ""
+                className={`contact-section__input ${!isValid && isEmpty(phoneNumber, {ignore_whitespace:true}) 
                     ? "contact-section__input--error"
                     : ""
                   }`}
@@ -329,7 +330,7 @@ export default function NewWarehouse() {
                     className="contact-section__error-icon"
                   />
                   <span className="contact-section__error-command">
-                  {phoneNumber === "" ? "This field is required" : "A valid phone number is required"}
+                  {isEmpty(phoneNumber, {ignore_whitespace:true}) ? "This field is required" : "A valid phone number is required"}
                   </span>
                 </div>
               ) : (
@@ -340,7 +341,7 @@ export default function NewWarehouse() {
               <label className="contact-section__label">Email</label>
               <input
                 type="text"
-                className={`contact-section__input ${!isValid && email === ""
+                className={`contact-section__input ${!isValid && isEmpty(email, {ignore_whitespace:true})
                     ? "contact-section__input--error"
                     : ""
                   }`}
@@ -360,7 +361,7 @@ export default function NewWarehouse() {
                     className="contact-section__error-icon"
                   />
                   <span className="contact-section__error-command">
-                    {email === "" ? "This field is required" : "A valid email is required"}
+                    {isEmpty(email, {ignore_whitespace:true}) ? "This field is required" : "A valid email is required"}
                   </span>
                 </div>
               ) : (
