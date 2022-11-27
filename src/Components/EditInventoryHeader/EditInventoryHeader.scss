@@ -1,0 +1,25 @@
+@use "../../App.scss" as *;
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/colours" as *;
+@use "../../styles/partials/fonts" as *;
+
+.edit-inventory {
+    &__title-wrapper {
+      display: flex;
+      margin: 0rem 1.5rem 1.5rem;
+      align-items: center;
+      gap: 0.5rem;
+  
+      @include tablet {
+        margin-left: 2.5rem;
+      }
+    }
+  
+    &__title {
+      line-height: 2.25rem;
+    }
+  
+    &__back-link {
+      font-size: 0;
+    }
+  }
