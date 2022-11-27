@@ -15,6 +15,7 @@ export default function NewWarehouse() {
   const [isValid, setIsValid] = useState(true);
   const [warehouseData, setWarehouseData] = useState(null);
   const [checked, setChecked] = useState("Out of Stock");
+  const [missingId, setMissingId] = useState(false);
 
   let warehouseList = [];
 
@@ -64,7 +65,13 @@ export default function NewWarehouse() {
           navigate(`/inventory`);
         })
         .catch((err) => {
-          console.log(err);
+          console.log(err.response.data);
+          if (
+            err.response.data ===
+            "Warehouse_id value does not exist in the warehouses table"
+          ) {
+            setMissingId(true);
+          }
         });
     }
   };
@@ -334,6 +341,19 @@ export default function NewWarehouse() {
                   </div>
                 ) : (
                   ""
+                )}
+                {missingId && (
+                  <div className="item-availability__error-state">
+                    <img
+                      src={error}
+                      alt="Exclamation point icon to indicate when text field is empty"
+                      className="item-availability__error-icon"
+                    />
+                    <span className="item-availability__error-command">
+                      Warehouse does not exist in the database. Please choose a
+                      different warehouse
+                    </span>
+                  </div>
                 )}
               </div>
             </div>
