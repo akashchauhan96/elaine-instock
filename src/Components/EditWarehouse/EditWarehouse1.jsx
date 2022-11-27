@@ -5,19 +5,16 @@ import { useParams } from "react-router-dom";
 import "../NewWarehouse/NewWarehouse.scss";
 import error from "../../assets/icons/error-24px.svg";
 import axios from "axios";
+import { isEmail, isMobilePhone, isEmpty } from "validator";
 
 export default function EditWarehouse1() {
   const { id } = useParams();
   const [axiosCall, setAxiosCall] = useState(null);
-  const [warehouseName, setWarehouseName] = useState("");
-  const [streetAddress, setStreetAddress] = useState("");
-  const [city, setCity] = useState("");
-  const [country, setCountry] = useState("");
-  const [contactName, setContactName] = useState("");
-  const [position, setPosition] = useState("");
   const [phoneNumber, setPhoneNumber] = useState("");
-  const [email, setEmail] = useState("");
   const [isValid, setIsValid] = useState(true);
+  const [isValidEmail, setIsValidEmail] = useState(true);
+  const [isValidPhone, setIsValidPhone] = useState(true);
+  const [hasDash, setHasDash] = useState(false);
   const navigate = useNavigate();
   useEffect(() => {
     axios
@@ -35,33 +32,53 @@ export default function EditWarehouse1() {
     return <p>loading</p>;
   }
 
-  console.log(id);
-
-  console.log(axiosCall);
-  if (axiosCall !== null) {
-    console.log(axiosCall.warehouse_name);
-  }
-
   const handleOnSubmit = (e) => {
     e.preventDefault();
-    console.log(e.target.warehouseName.value);
-    const updatedWarehouse = {};
-    updatedWarehouse.warehouse_name = e.target.warehouseName.value;
-    updatedWarehouse.address = e.target.streetAddress.value;
-    updatedWarehouse.city = e.target.city.value;
-    updatedWarehouse.country = e.target.country.value;
-    updatedWarehouse.contact_name = e.target.contactName.value;
-    updatedWarehouse.contact_position = e.target.position.value;
-    updatedWarehouse.contact_phone = e.target.phoneNumber.value;
-    updatedWarehouse.contact_email = e.target.email.value;
-    axios
-      .put(`http://localhost:8080/warehouse/${id}`, updatedWarehouse)
-      .then(navigate("/"))
-      .catch((err) => {
-        console.log(
-          `An error occured while trying to access the warehouses: ${err}`
-        );
-      });
+    console.log(axiosCall);
+    // Form validation upon submit
+    if (
+      isEmpty(axiosCall.warehouse_name, { ignore_whitespace: true }) ||
+      isEmpty(axiosCall.address, { ignore_whitespace: true }) ||
+      isEmpty(axiosCall.city, { ignore_whitespace: true }) ||
+      isEmpty(axiosCall.country, { ignore_whitespace: true }) ||
+      isEmpty(axiosCall.contact_name, { ignore_whitespace: true }) ||
+      isEmpty(axiosCall.contact_position, { ignore_whitespace: true }) ||
+      isEmpty(axiosCall.contact_phone, { ignore_whitespace: true }) ||
+      !isEmail(axiosCall.contact_email)
+    ) {
+      setIsValid(false);
+      if (!isEmail(axiosCall.contact_email)) {
+        setIsValidEmail(false);
+      } else {
+        setIsValidEmail(true);
+      }
+      if (!isMobilePhone(phoneNumber)) {
+        setIsValidPhone(false);
+      } else {
+        setIsValidPhone(true);
+      }
+      return console.log("Code is Fuccked");
+    } else {
+      const updatedWarehouse = {};
+      updatedWarehouse.warehouse_name = e.target.warehouseName.value;
+      updatedWarehouse.address = e.target.streetAddress.value;
+      updatedWarehouse.city = e.target.city.value;
+      updatedWarehouse.country = e.target.country.value;
+      updatedWarehouse.contact_name = e.target.contactName.value;
+      updatedWarehouse.contact_position = e.target.position.value;
+      updatedWarehouse.contact_phone = e.target.phoneNumber.value;
+      updatedWarehouse.contact_email = e.target.email.value;
+      console.log(updatedWarehouse);
+      axios
+        .put(`http://localhost:8080/warehouse/${id}/`, updatedWarehouse)
+        .then(navigate("/warehouses"))
+
+        .catch((err) => {
+          console.log(
+            `An error occured while trying to access the warehouses: ${err}`
+          );
+        });
+    }
   };
 
   return (
@@ -85,7 +102,8 @@ export default function EditWarehouse1() {
               <input
                 type="text"
                 className={`warehouse-section__input ${
-                  !isValid && warehouseName === ""
+                  !isValid &&
+                  isEmpty(axiosCall.warehouse_name, { ignore_whitespace: true })
                     ? "warehouse-section__input--error"
                     : ""
                 }`}
@@ -99,7 +117,9 @@ export default function EditWarehouse1() {
                   });
                 }}
               />
-              {!isValid && warehouseName === "" ? (
+
+              {!isValid &&
+              isEmpty(axiosCall.warehouse_name, { ignore_whitespace: true }) ? (
                 <div className="warehouse-section__error-state">
                   <img
                     src={error}
@@ -119,7 +139,8 @@ export default function EditWarehouse1() {
               <input
                 type="text"
                 className={`warehouse-section__input ${
-                  !isValid && streetAddress === ""
+                  !isValid &&
+                  isEmpty(axiosCall.address, { ignore_whitespace: true })
                     ? "warehouse-section__input--error"
                     : ""
                 }`}
@@ -133,7 +154,8 @@ export default function EditWarehouse1() {
                   });
                 }}
               />
-              {!isValid && streetAddress === "" ? (
+              {!isValid &&
+              isEmpty(axiosCall.address, { ignore_whitespace: true }) ? (
                 <div className="warehouse-section__error-state">
                   <img
                     src={error}
@@ -153,7 +175,8 @@ export default function EditWarehouse1() {
               <input
                 type="text"
                 className={`warehouse-section__input ${
-                  !isValid && city === ""
+                  !isValid &&
+                  isEmpty(axiosCall.city, { ignore_whitespace: true })
                     ? "warehouse-section__input--error"
                     : ""
                 }`}
@@ -167,7 +190,8 @@ export default function EditWarehouse1() {
                   });
                 }}
               />
-              {!isValid && city === "" ? (
+              {!isValid &&
+              isEmpty(axiosCall.city, { ignore_whitespace: true }) ? (
                 <div className="warehouse-section__error-state">
                   <img
                     src={error}
@@ -187,7 +211,8 @@ export default function EditWarehouse1() {
               <input
                 type="text"
                 className={`warehouse-section__input ${
-                  !isValid && country === ""
+                  !isValid &&
+                  isEmpty(axiosCall.country, { ignore_whitespace: true })
                     ? "warehouse-section__input--error"
                     : ""
                 }`}
@@ -201,7 +226,8 @@ export default function EditWarehouse1() {
                   });
                 }}
               />
-              {!isValid && country === "" ? (
+              {!isValid &&
+              isEmpty(axiosCall.country, { ignore_whitespace: true }) ? (
                 <div className="warehouse-section__error-state">
                   <img
                     src={error}
@@ -224,7 +250,8 @@ export default function EditWarehouse1() {
               <input
                 type="text"
                 className={`contact-section__input ${
-                  !isValid && contactName === ""
+                  !isValid &&
+                  isEmpty(axiosCall.contact_name, { ignore_whitespace: true })
                     ? "contact-section__input--error"
                     : ""
                 }`}
@@ -238,7 +265,8 @@ export default function EditWarehouse1() {
                   });
                 }}
               />
-              {!isValid && contactName === "" ? (
+              {!isValid &&
+              isEmpty(axiosCall.contact_name, { ignore_whitespace: true }) ? (
                 <div className="contact-section__error-state">
                   <img
                     src={error}
@@ -258,7 +286,10 @@ export default function EditWarehouse1() {
               <input
                 type="text"
                 className={`contact-section__input ${
-                  !isValid && position === ""
+                  !isValid &&
+                  isEmpty(axiosCall.contact_position, {
+                    ignore_whitespace: true,
+                  })
                     ? "contact-section__input--error"
                     : ""
                 }`}
@@ -272,7 +303,10 @@ export default function EditWarehouse1() {
                   });
                 }}
               />
-              {!isValid && position === "" ? (
+              {!isValid &&
+              isEmpty(axiosCall.contact_position, {
+                ignore_whitespace: true,
+              }) ? (
                 <div className="contact-section__error-state">
                   <img
                     src={error}
@@ -292,7 +326,8 @@ export default function EditWarehouse1() {
               <input
                 type="text"
                 className={`contact-section__input ${
-                  !isValid && phoneNumber === ""
+                  !isValid &&
+                  isEmpty(axiosCall.contact_phone, { ignore_whitespace: true })
                     ? "contact-section__input--error"
                     : ""
                 }`}
@@ -300,13 +335,62 @@ export default function EditWarehouse1() {
                 value={axiosCall.contact_phone}
                 placeholder="Phone Number"
                 onChange={(e) => {
+                  if (
+                    e.target.value.toString().length &&
+                    !e.target.value.toString().startsWith("+")
+                  ) {
+                    setPhoneNumber("+1 " + e.target.value);
+                    return;
+                  } else if (
+                    e.target.value.toString().length > 2 &&
+                    !e.target.value.toString().startsWith("+1 ")
+                  ) {
+                    const phoneArray = e.target.value.split("");
+                    phoneArray.splice(0, 1, "+1 ");
+                    setPhoneNumber(phoneArray.join(""));
+                    return;
+                  }
+                  if (
+                    e.target.value.toString().length === 6 &&
+                    !e.target.value.toString().includes("(")
+                  ) {
+                    const phoneArray = e.target.value.split("");
+                    phoneArray.splice(3, 0, "(");
+                    phoneArray.splice(7, 0, ") ");
+                    setPhoneNumber(phoneArray.join(""));
+                    return;
+                  } else if (
+                    e.target.value.toString().length >= 9 &&
+                    !e.target.value.toString().includes(") ")
+                  ) {
+                    const phoneArray = e.target.value.split("");
+                    phoneArray.splice(7, 1, ") ");
+                    setPhoneNumber(phoneArray.join(""));
+                    return;
+                  }
+                  if (e.target.value.toString().length >= 12 && !hasDash) {
+                    const phoneArray = e.target.value.split("");
+                    phoneArray.splice(12, 0, "-");
+                    setPhoneNumber(phoneArray.join(""));
+                    setHasDash(true);
+                    return;
+                  } else if (
+                    e.target.value.toString().length <= 12 &&
+                    !e.target.value.toString().includes("-")
+                  ) {
+                    setHasDash(false);
+                  }
+                  if (e.target.value.toString().length >= 18) {
+                    return;
+                  }
+                  setIsValidPhone(isMobilePhone(e.target.value));
                   setAxiosCall({
                     ...axiosCall,
                     contact_phone: e.target.value,
                   });
                 }}
               />
-              {!isValid && phoneNumber === "" ? (
+              {!isValid && isValidPhone ? (
                 <div className="contact-section__error-state">
                   <img
                     src={error}
@@ -326,7 +410,8 @@ export default function EditWarehouse1() {
               <input
                 type="text"
                 className={`contact-section__input ${
-                  !isValid && email === ""
+                  !isValid &&
+                  isEmpty(axiosCall.contact_email, { ignore_whitespace: true })
                     ? "contact-section__input--error"
                     : ""
                 }`}
@@ -338,9 +423,10 @@ export default function EditWarehouse1() {
                     ...axiosCall,
                     contact_email: e.target.value,
                   });
+                  setIsValidEmail(isEmail(e.target.value));
                 }}
               />
-              {!isValid && email === "" ? (
+              {!isValid && isValidEmail ? (
                 <div className="contact-section__error-state">
                   <img
                     src={error}
@@ -348,7 +434,11 @@ export default function EditWarehouse1() {
                     className="contact-section__error-icon"
                   />
                   <span className="contact-section__error-command">
-                    This field is required
+                    {isEmpty(axiosCall.contact_email, {
+                      ignore_whitespace: true,
+                    })
+                      ? "This field is required"
+                      : "A valid email is required"}
                   </span>
                 </div>
               ) : (

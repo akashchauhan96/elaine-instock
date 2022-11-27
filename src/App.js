@@ -14,43 +14,28 @@ function App() {
   return (
     <>
       <BrowserRouter>
-        
-<Header />
+        <Header />
         <div className="main__background">
           <div className="main__content">
-            
             <Routes>
-              <Route path="/" element={<WarehouseList />} />
               <Route
-                path="/warehouse/:warehouseId"
+                path="/"
+                element={<Navigate to="/warehouses" replace={true} />}
+              />
+              <Route path="/warehouses" element={<WarehouseList />} />
+              <Route
+                path="/warehouses/:warehouseId"
                 element={<SelectedWarehouse />}
               />
-              <Route path="/add-warehouse" element={<AddWarehouse />} />
-              <Route path="/edit-warehouse/:id" element={<EditWarehouse />} />
+              <Route path="/warehouses/add" element={<AddWarehouse />} />
+              <Route path="/warehouses/:id/edit" element={<EditWarehouse />} />
               <Route path="/inventory" element={<InventoryList />} />
               <Route path="/inventory/:id" element={<InventoryItem />} />
               <Route
-                path="/edit-inventory-item"
+                path="/inventory/:id/edit"
                 element={<EditInventoryItem />}
               />
-              <Route
-                path="/add-inventory-item"
-                element={<AddInventoryItem />}
-              />{" "}
-
-          <div className="main__background">
-            <div className="main__content">
-               
-                <Route path='/' element={<Navigate to='/warehouses' replace={true} />} />
-                  <Route path="/warehouses" element={<WarehouseList />} />
-                  <Route path="/warehouses/:warehouseId" element={<SelectedWarehouse />} />
-                  <Route path="/warehouses/add" element={<AddWarehouse />} />
-                  <Route path="/warehouses/:id/edit" element={<EditWarehouse />} />
-                  <Route path="/inventory" element={<InventoryList />} />
-                  <Route path="/inventory/:id" element={<InventoryItem />} />
-                  <Route path="/inventory/:id/edit" element={<EditInventoryItem />} />
-                  <Route path="/inventory/add" element={<AddInventoryItem />} />
-
+              <Route path="/inventory/add" element={<AddInventoryItem />} />
             </Routes>
           </div>
         </div>
