@@ -25,7 +25,10 @@ function WarehouseListItem({
         <div className="warehouseListItem__info warehouseListItem__info--first">
           <h4 className="warehouseListItem__title">Warehouse</h4>
           <div className="warehouseListItem__nameWrapper">
-            <Link className="warehouseListItem__link" to={`/warehouses/${warehouse.id}`}>
+            <Link
+              className="warehouseListItem__link"
+              to={`/warehouses/${warehouse.id}`}
+            >
               <h3 className="warehouseListItem__name">
                 {warehouse.warehouse_name}
               </h3>
