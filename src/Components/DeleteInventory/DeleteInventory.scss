@@ -1,0 +1,103 @@
+@use "../../styles/partials/breakpoints" as *;
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/colours" as *;
+
+.deleteInventory {
+  background-color: $light-text-colour;
+  margin: 0;
+  width: 100vw;
+  min-height: 37.5rem;
+  height: 100vh;
+
+  @include tablet {
+    min-height: 0;
+    height: auto;
+    width: 90%;
+    margin: auto;
+    border-radius: 5px;
+    margin-top: 12.5rem;
+  }
+
+  @include desktop {
+    width: 55%;
+  }
+
+  &__darkBG {
+    overflow: hidden;
+    background-color: rgba(1, 8, 34, 0.7);
+    width: 100vw;
+    height: 100vh;
+    z-index: 0;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    position: absolute;
+  }
+
+  &__centered {
+    position: fixed;
+  }
+
+  &__container {
+    padding: 1rem;
+    flex: 1;
+
+    @include tablet {
+      padding: 1rem 1rem 2rem 3rem;
+    }
+  }
+
+  &__icon {
+    cursor: pointer;
+  }
+
+  &__icon-wrapper {
+    text-align: right;
+  }
+
+  &__title {
+    margin-bottom: 1rem;
+  }
+
+  &__text-wrapper {
+    padding-bottom: 4rem;
+    @include tablet {
+      padding-bottom: 0;
+      margin-right: 4rem;
+    }
+  }
+
+  &__button-wrapper {
+    margin-top: 16rem;
+    display: flex;
+    justify-content: space-around;
+
+    @include tablet {
+      margin-top: 2rem;
+      justify-content: flex-end;
+      gap: 1rem;
+      margin-right: 4rem;
+    }
+  }
+
+  &__button {
+    padding: 0.5rem 3rem;
+    border-radius: 25px;
+    cursor: pointer;
+
+    @include tablet {
+      padding: 0.5rem 1rem;
+    }
+  }
+
+  &__button-cancel {
+    background-color: $light-text-colour;
+    border: 1px solid #bdc5d5;
+  }
+
+  &__button-delete {
+    background-color: $no-stock-colour;
+    color: $light-text-colour;
+    border: none;
+  }
+}

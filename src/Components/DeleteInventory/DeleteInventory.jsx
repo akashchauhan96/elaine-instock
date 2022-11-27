@@ -1,14 +1,13 @@
-import "./DeleteWH.scss";
+import "./DeleteInventory.scss";
 import CloseIcon from "../../assets/icons/close-24px.svg";
 import axios from "axios";
+import { URL } from '../../utils/util';
 
-function DeleteWH({ setOpenModal, warehouse, setIsDeleted, isDeleted }) {
-  const urlWarehouse = `http://localhost:8080/warehouse/${warehouse.id}`;
-
+function DeleteInventory({ setOpenModal, inventory, setIsDeleted, isDeleted }) {
 
   const handleDeleteWarehouse = (event) => {
     axios
-      .delete(`${urlWarehouse}`)
+      .delete(`${URL}/inventory/${inventory.id}`)
       .then(() => {
         setIsDeleted(!isDeleted);
       })
@@ -18,41 +17,41 @@ function DeleteWH({ setOpenModal, warehouse, setIsDeleted, isDeleted }) {
   };
   return (
     <div
-      className="delete__darkBG delete__centered "
+      className="deleteInventory__darkBG deleteInventory__centered "
       onClick={() => setOpenModal(false)}
     >
       <div>
-        <div className="delete">
-          <div className="delete__container">
-            <div className="delete__icon-wrapper">
+        <div className="deleteInventory">
+          <div className="deleteInventory__container">
+            <div className="deleteInventory__icon-wrapper">
               <img
                 src={CloseIcon}
                 alt="close icon"
-                className="delete__icon"
+                className="deleteInventory__icon"
                 onClick={() => {
                   setOpenModal(false);
                 }}
               />
             </div>
-            <div className="delete__text-wrapper">
-              <h1 className="delete__title">
-                Delete {warehouse.warehouse_name} warehouse?
+            <div className="deleteInventory__text-wrapper">
+              <h1 className="deleteInventory__title">
+                Delete {inventory.item_name} inventory item?
               </h1>
-              <p className="delete__body">
+              <p className="deleteInventory__body">
                 Please confirm that you'd like to delete the{" "}
-                {warehouse.warehouse_name} from the list of warehouses. You
+                {inventory.item_name} from the inventory list. You
                 won't be able to undo this action.
               </p>
             </div>
-            <div className="delete__button-wrapper">
+            <div className="deleteInventory__button-wrapper">
               <button
-                className="delete__button delete__button-cancel"
+                className="deleteInventory__button deleteInventory__button-cancel"
                 onClick={() => setOpenModal(false)}
               >
                 Cancel
               </button>
               <button
-                className="delete__button delete__button-delete"
+                className="deleteInventory__button deleteInventory__button-delete"
                 onClick={handleDeleteWarehouse}
               >
                 Delete
@@ -65,4 +64,4 @@ function DeleteWH({ setOpenModal, warehouse, setIsDeleted, isDeleted }) {
   );
 }
 
-export default DeleteWH;
+export default DeleteInventory;

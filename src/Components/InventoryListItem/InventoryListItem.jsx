@@ -3,8 +3,11 @@ import deleteIcon from '../../assets/icons/delete_outline-24px.svg';
 import editIcon from '../../assets/icons/edit-24px-blue.svg';
 import rightChevron from '../../assets/icons/chevron_right-24px.svg';
 import { Link } from 'react-router-dom';
+import DeleteInventory from '../DeleteInventory/DeleteInventory';
+import { useState } from 'react';
 
-function InventoryListItem({ inventory, isLastInventory }) {
+function InventoryListItem({ inventory, isLastInventory, isDeleted, setIsDeleted }) {
+    const [openModal, setOpenModal] = useState(false);
 
     if (!inventory) {
         return;
@@ -43,14 +46,21 @@ function InventoryListItem({ inventory, isLastInventory }) {
                 </div>
             </div>
             <div className='inventoryListItem__icons'>
-                {/* Link to delete warehouse modal */}
-                <Link>
-                    <img className='inventoryListItem__icon' src={deleteIcon} alt='Delete Icon' />
-                </Link>
+                <img className='inventoryListItem__icon' onClick={() => {
+                    setOpenModal(true);
+                }} src={deleteIcon} alt='Delete Icon' />
                 <Link to={`/inventory/${inventory.id}/edit`}>
                     <img className='inventoryListItem__icon' src={editIcon} alt='Edit Icon' />
                 </Link>
             </div>
+            {openModal && (
+                <DeleteInventory
+                    setOpenModal={setOpenModal}
+                    inventory={inventory}
+                    setIsDeleted={setIsDeleted}
+                    isDeleted={isDeleted}
+                />
+            )}
         </div>
     );
 }
