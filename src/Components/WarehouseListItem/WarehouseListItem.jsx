@@ -17,7 +17,10 @@ function WarehouseListItem({
   return (
     // Remove border of last warehouse in table
     <div
-      className={`warehouseListItem ${isLastWarehouse ? "warehouseListItem--noBorder" : "" }`}>
+      className={`warehouseListItem ${
+        isLastWarehouse ? "warehouseListItem--noBorder" : ""
+      }`}
+    >
       <div className="warehouseListItem__container warehouseListItem__container--first">
         <div className="warehouseListItem__info warehouseListItem__info--first">
           <h4 className="warehouseListItem__title">Warehouse</h4>
@@ -55,7 +58,6 @@ function WarehouseListItem({
             setOpenModal(!openModal);
           }}
         />
-
         <Link to={`/warehouses/${warehouse.id}/edit`}>
           <img
             className="warehouseListItem__icon"
