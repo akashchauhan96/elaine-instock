@@ -16,14 +16,11 @@
       background: linear-gradient(to bottom, $dark-background-colour 3.25rem, $light-background-colour 0%);
       height: 100%;
       width: 100%;
-      padding: 0 0 1rem 0;
+      padding: 1rem 0;
 
     @include tablet {
-      background: linear-gradient(
-        to bottom,
-        $dark-background-colour 6.25rem,
-        $light-background-colour 0%
-      );
+      background: linear-gradient(to bottom, $dark-background-colour 6.25rem, $light-background-colour 0%);
+      padding: 0 0 1rem 0;
     }
 
     @include desktop {

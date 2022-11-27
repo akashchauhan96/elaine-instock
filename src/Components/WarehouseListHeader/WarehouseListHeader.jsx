@@ -8,7 +8,7 @@ function WarehouseListHeader() {
             <h1 className='warehouseListHeader__title'>Warehouses</h1>
             <div className='warehouseListHeader__container'>
                 <input className='warehouseListHeader__search' type="search" placeholder='Search...' />
-                <Link className='warehouseListHeader__link' to={"/add-warehouse"}>
+                <Link className='warehouseListHeader__link' to={"/warehouses/add"}>
                     <div className='warehouseListHeader__button'>+ Add New Warehouse</div>
                 </Link>
             </div>

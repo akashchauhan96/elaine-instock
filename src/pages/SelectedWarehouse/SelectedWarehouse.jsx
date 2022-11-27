@@ -34,11 +34,15 @@ function SelectedWarehouse() {
         })
     }, [warehouseId])  
 
-    console.log(warehouseInventory)
-
-    if(!warehousePageDetails || !warehouseInventory){
+    if(!warehousePageDetails && !warehouseInventory){
         return <h1>Loading...</h1>
       }
+
+    if(!warehousePageDetails) {
+        return
+    }
+
+    console.log(warehousePageDetails)
 
     return (
         <>

@@ -2,9 +2,19 @@ import '../WarehouseInventoryItem/WarehouseInventoryItem.scss';
 import deleteIcon from '../../assets/icons/delete_outline-24px.svg';
 import editIcon from '../../assets/icons/edit-24px-blue.svg';
 import rightChevron from '../../assets/icons/chevron_right-24px.svg';
+import NoInventory from '../NoInventory/NoInventory';
 import { Link } from 'react-router-dom';
 
 export default function WarehouseInventoryItem({ warehouseInventory }) {
+
+    if (!warehouseInventory) {
+        return;
+    }
+
+    if (warehouseInventory.length === 0) {
+        return <NoInventory />
+    }
+
 
     return (
         <>
@@ -17,7 +27,7 @@ export default function WarehouseInventoryItem({ warehouseInventory }) {
                     <div className='warehouseInventory__info warehouseInventory__info--first'>
                         <h4 className='warehouseInventory__title'>Inventory Item</h4>
                         <div className='warehouseInventory__nameWrapper'>
-                            <Link to="/inventory/:inventoryId" className='warehouseListItem__link'>
+                            <Link to={`/inventory/${inventory.id}`} className='warehouseListItem__link'>
                                 <h3 className='warehouseInventory__name'>{inventory.item_name}</h3>
                                 <img src={rightChevron} alt="Right Chevron Icon" />
                              </Link>
@@ -43,7 +53,7 @@ export default function WarehouseInventoryItem({ warehouseInventory }) {
                     <Link>
                         <img className='warehouseInventory__icon' src={deleteIcon} alt='Delete Icon' />
                     </Link>
-                    <Link to={"/edit-warehouse"}>
+                    <Link to={`/inventory/${inventory.id}/edit`}>
                         <img className='warehouseInventory__icon' src={editIcon} alt='Edit Icon' />
                     </Link>
                 </div>
