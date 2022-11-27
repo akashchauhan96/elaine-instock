@@ -7,6 +7,7 @@ import InventoryListItem from '../InventoryListItem/InventoryListItem';
 
 function InventoryListTable() {
     const [inventories, setInventories] = useState(null);
+    const [isDeleted, setIsDeleted] = useState(false);
 
     useEffect(() => {
         axios.get(URL + "/inventory").then((response) => {
@@ -14,7 +15,7 @@ function InventoryListTable() {
         }).catch((err) => {
             console.log(`An error occured while trying to access the warehouses: ${err}`);
         })
-    }, []);
+    }, [isDeleted]);
 
     if (!inventories) {
         return <h1>Loading...</h1>
@@ -49,9 +50,13 @@ function InventoryListTable() {
             </div>
             {/* Display warehouses conatined within array in warehouses state variable */}
             {inventories.map((inventory) => {
-                console.log(inventory);
                 // Checks to see if it is the last warehouse in the list and pass as prop to remove border 
-               return <InventoryListItem key={inventory.id} inventory={inventory} isLastInventory={inventory.id === inventories[inventories.length - 1].id ? true : false}/>
+               return <InventoryListItem 
+               key={inventory.id} 
+               inventory={inventory} 
+               isDeleted={isDeleted}
+               setIsDeleted={setIsDeleted}
+               isLastInventory={inventory.id === inventories[inventories.length - 1].id ? true : false}/>
             })}
 
             <InventoryListItem/>
