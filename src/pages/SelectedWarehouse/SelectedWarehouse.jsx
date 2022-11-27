@@ -1,15 +1,21 @@
 import WarehouseDetails from '../../Components/WarehouseDetails/WarehouseDetails';
+import WarehouseInventoryTable from '../../Components/WarehouseInventoryTable/WarehouseInventoryTable';
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
+import { URL } from '../../utils/util';
+import WarehouseInventoryItem from '../../Components/WarehouseInventoryItem/WarehouseInventoryItem';
+
 
 function SelectedWarehouse() {
     const {warehouseId} = useParams();
 
-    const [warehousePageDetails, setWarehousePageDetails] = useState(0);
+    const [warehousePageDetails, setWarehousePageDetails] = useState(null);
+
+    const [warehouseInventory, setWarehouseInventory] = useState(null);
 
     useEffect(() => {
-        axios.get(`http://localhost:8080/warehouse/${warehouseId}`)
+        axios.get(URL + `/warehouse/${warehouseId}`)
         .then((response) => {
             setWarehousePageDetails(response.data)
         })
@@ -18,13 +24,35 @@ function SelectedWarehouse() {
         })
     }, [warehouseId])  
 
-    
+    useEffect(() => {
+        axios.get(URL + `/warehouse/${warehouseId}/inventories`)
+        .then((response) => {
+            setWarehouseInventory(response.data)
+        })
+        .catch((error) => {
+            console.log('ruh roh!')
+        })
+    }, [warehouseId])  
+
+    if(!warehousePageDetails && !warehouseInventory){
+        return <h1>Loading...</h1>
+      }
+
+    if(!warehousePageDetails) {
+        return
+    }
+
+    console.log(warehousePageDetails)
+
     return (
         <>
         <WarehouseDetails
             warehousePageDetails = { warehousePageDetails }
             />
-        {/* Warehouse Inventory goes here */}
+        <WarehouseInventoryTable />
+        <WarehouseInventoryItem 
+            warehouseInventory = { warehouseInventory }
+            />
         </>
     )
 }

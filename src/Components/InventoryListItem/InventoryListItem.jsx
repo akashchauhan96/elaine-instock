@@ -47,7 +47,7 @@ function InventoryListItem({ inventory, isLastInventory }) {
                 <Link>
                     <img className='inventoryListItem__icon' src={deleteIcon} alt='Delete Icon' />
                 </Link>
-                <Link to={"/edit-inventory-item"}>
+                <Link to={`/inventory/${inventory.id}/edit`}>
                     <img className='inventoryListItem__icon' src={editIcon} alt='Edit Icon' />
                 </Link>
             </div>

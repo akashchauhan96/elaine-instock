@@ -1,0 +1,276 @@
+@use "../../App.scss" as *;
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/colours" as *;
+@use "../../styles/partials/fonts" as *;
+
+.new-inventory {
+  &__title-wrapper {
+    display: flex;
+    margin: 0rem 1.5rem 1.5rem;
+    align-items: center;
+    gap: 0.5rem;
+
+    @include tablet {
+      margin-left: 2.5rem;
+    }
+  }
+
+  &__title {
+    line-height: 2.25rem;
+  }
+
+  &__back-link {
+    font-size: 0;
+  }
+}
+
+.form {
+  &__sections {
+    @include tablet {
+      display: flex;
+      border-top: 1px solid $accent-colour;
+    }
+  }
+}
+
+.item-details {
+  padding: 1.5rem;
+  border-top: 1px solid $accent-colour;
+
+  @include tablet {
+    width: 50%;
+    border-right: 1px solid $accent-colour;
+    margin: 2.25rem 0 1rem 2.25rem;
+    padding: 0 2.25rem 0 0;
+    border-top: none;
+  }
+
+  &__title {
+    margin-bottom: 1.5rem;
+  }
+
+  &__wrapper {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1rem;
+  }
+
+  &__label {
+    font-size: 0.8125rem;
+    line-height: 1.25rem;
+    font-weight: 600;
+  }
+
+  &__input {
+    border-radius: 5rem;
+    border: 1px solid $accent-colour;
+    padding: 0.25rem 0.75rem;
+
+    &::placeholder {
+      font-size: 0.8125rem;
+      line-height: 1.25rem;
+      font-weight: 400;
+    }
+
+    &--error {
+      border-color: $no-stock-colour;
+    }
+
+    &:focus {
+      outline: none;
+      border-color: $button-colour;
+    }
+  }
+
+  &__text {
+    border-radius: 1rem;
+    border: 1px solid $accent-colour;
+    padding: 0.25rem 0.75rem;
+    height: 7rem;
+    resize: none;
+
+    &--error {
+      border-color: $no-stock-colour;
+    }
+
+    &:focus {
+      outline: none;
+      border-color: $button-colour;
+    }
+  }
+
+  &__dropdown-menu {
+    border-radius: 1rem;
+    border: 1px solid $accent-colour;
+    padding: 0.25rem 0.75rem;
+
+    &--error {
+      border-color: $no-stock-colour;
+    }
+  }
+
+  &__error-state {
+    margin-top: 0.25rem;
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+  }
+
+  &__error-command {
+    font-size: 0.75rem;
+    line-height: 1.125rem;
+    font-weight: 400;
+    color: $no-stock-colour;
+  }
+}
+
+.item-availability {
+  padding: 1.5rem;
+  border-top: 1px solid $accent-colour;
+
+  @include tablet {
+    width: 50%;
+    margin: 2.25rem 2.25rem 2.25rem 0;
+    padding: 0 0 0 2.25rem;
+    border-top: none;
+  }
+
+  &__title {
+    margin-bottom: 1.5rem;
+  }
+
+  &__wrapper {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1rem;
+  }
+
+  &__label {
+    font-size: 0.8125rem;
+    line-height: 1.25rem;
+    font-weight: 600;
+  }
+
+  &__status-options {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__stock-wrapper {
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+    flex: 1;
+
+    &--flex-size {
+      flex: 1;
+    }
+  }
+
+  &__radio-label {
+    display: flex;
+    gap: 0.5rem;
+    font-size: 0.8125rem;
+    line-height: 1.25rem;
+    font-weight: 400;
+  }
+
+  &__input {
+    border-radius: 5rem;
+    border: 1px solid $accent-colour;
+    padding: 0.25rem 0.75rem;
+
+    &::placeholder {
+      font-size: 0.8125rem;
+      line-height: 1.25rem;
+      font-weight: 400;
+    }
+
+    &--error {
+      border-color: $no-stock-colour;
+    }
+
+    &:focus {
+      outline: none;
+      border-color: $button-colour;
+    }
+  }
+
+  &__dropdown-menu {
+    border-radius: 1rem;
+    border: 1px solid $accent-colour;
+    padding: 0.25rem 0.75rem;
+
+    &--error {
+      border-color: $no-stock-colour;
+    }
+  }
+
+  &__error-state {
+    margin-top: 0.25rem;
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+  }
+
+  &__error-command {
+    font-size: 0.75rem;
+    line-height: 1.125rem;
+    font-weight: 400;
+    color: $no-stock-colour;
+  }
+}
+
+.buttons {
+  padding: 0.75rem 1rem;
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  background-color: $light-background-colour;
+
+  @include tablet {
+    justify-content: flex-end;
+    padding: 0.7rem 2.25rem;
+  }
+
+  &__cancel {
+    display: block;
+    width: 100%;
+    border-radius: 5rem;
+    padding: 0.5rem;
+    border: 1px solid $accent-colour;
+    background-color: $light-text-colour;
+    font-weight: 600;
+    cursor: pointer;
+
+    &:hover {
+      border-color: $button-colour;
+      color: $button-colour;
+    }
+
+    @include tablet {
+      width: auto;
+      padding: 0.5rem 1rem;
+    }
+  }
+
+  &__add-item {
+    display: block;
+    width: 100%;
+    border-radius: 5rem;
+    border: 1px solid $accent-colour;
+    background-color: $button-colour;
+    color: $light-text-colour;
+    font-weight: 600;
+    cursor: pointer;
+
+    &:hover {
+      background-color: $dark-background-colour;
+    }
+
+    @include tablet {
+      width: auto;
+      padding: 0.5rem 1rem;
+    }
+  }
+}

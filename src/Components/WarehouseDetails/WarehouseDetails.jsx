@@ -9,12 +9,12 @@ export default function WarehouseDetails ( { warehousePageDetails } ) {
         <div className='warehouse'>
         <div className='warehouse__header'>
             <div className='warehouse__title'>
-                <Link to="/">
+                <Link to="/warehouses">
                     <img className="warehouse__back-icon" src={ backArrow } alt="Go Back" />
                 </Link>
                 <h1 className='warehouse__name' key={ warehousePageDetails.id }>{ warehousePageDetails.warehouse_name }</h1>
             </div>
-            <Link className="warehouse__edit" to={`/edit-warehouse/${warehousePageDetails.id}`}>
+            <Link className="warehouse__edit" to={`/warehouses/${warehousePageDetails.id}/edit`}>
                 <img className="warehouse__edit-icon" src={ editIcon } alt="Edit Warehouse" />
                 <p className="warehouse__edit-text">Edit</p>
             </Link>
@@ -22,15 +22,16 @@ export default function WarehouseDetails ( { warehousePageDetails } ) {
             <div className='warehouse__details-container'>
                 <div className='warehouse__details'>
                     <h4 className='warehouse__detail'>Warehouse Address:</h4>
-                    <p className='warehouse__info'>{ warehousePageDetails.address }, { warehousePageDetails.city }, { warehousePageDetails.country }</p>
+                    <p className='warehouse__info'>{ warehousePageDetails.address },</p>
+                    <p className='warehouse__info'>{ warehousePageDetails.city }, { warehousePageDetails.country }</p>
                 </div>
                 <div className='warehouse__more-details'>
-                    <div className='warehouse__details'>
+                    <div className='warehouse__details warehouse__details--twin'>
                         <h4 className='warehouse__detail'>Contact Name:</h4>
                         <p className='warehouse__info'>{ warehousePageDetails.contact_name }</p>
                         <p className='warehouse__info'>{ warehousePageDetails.contact_position }</p>
                     </div>
-                    <div className='warehouse__details'>
+                    <div className='warehouse__details warehouse__details--twin'>
                         <h4 className='warehouse__detail'>Contact Information:</h4>
                         <p className='warehouse__info'>{ warehousePageDetails.contact_phone }</p>
                         <p className='warehouse__info'>{ warehousePageDetails.contact_email }</p>                       
