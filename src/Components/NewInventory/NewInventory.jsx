@@ -15,7 +15,6 @@ export default function NewWarehouse() {
   const [isValid, setIsValid] = useState(true);
   const [warehouseData, setWarehouseData] = useState(null);
   const [checked, setChecked] = useState("Out of Stock");
-  const [renderList, setRenderList] = useState(false);
 
   let warehouseList = [];
 
@@ -24,7 +23,6 @@ export default function NewWarehouse() {
       .get(`${URL}/warehouse`)
       .then((resp) => {
         setWarehouseData(resp.data);
-        setRenderList(true);
       })
       .catch((err) => {
         console.log(err);
@@ -35,13 +33,12 @@ export default function NewWarehouse() {
 
   const handleOnSubmit = (e) => {
     e.preventDefault();
-    console.log(e.target.status.value);
     const newInventory = {};
     if (
       !itemName ||
       !description ||
-      !quantity ||
-      quantity.charAt(0) === 0 ||
+      (!isChecked("Out of Stock") && !quantity) ||
+      (isChecked("In Stock") && isNaN(quantity)) ||
       !selectedWarehouse ||
       !selectedCategory
     ) {
@@ -60,7 +57,6 @@ export default function NewWarehouse() {
 
       newInventory.warehouse_id = e.target.warehouseId.value;
       setIsValid(true);
-      console.log(newInventory);
 
       axios
         .post(`${URL}/inventory`, newInventory)
@@ -74,7 +70,7 @@ export default function NewWarehouse() {
   };
 
   const isChecked = (option) => {
-    return option === checked;
+    return checked === option;
   };
 
   const isSelected = (event) => {
