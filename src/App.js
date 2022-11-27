@@ -8,12 +8,13 @@ import InventoryItem from "./pages/InventoryItem/InventoryItem";
 import EditInventoryItem from "./pages/EditInventoryItem/EditInventoryItem";
 import AddInventoryItem from "./pages/AddInventoryItem/AddInventoryItem";
 import Header from "./Components/Header/Header";
+import Footer from "./Components/Footer/Footer";
 import "./App.scss";
 
 function App() {
   return (
     <>
-      <BrowserRouter>
+      <BrowserRouter className="browser-router">
         <Header />
           <div className="main__background">
             <div className="main__content">
@@ -29,6 +30,7 @@ function App() {
                   <Route path="/inventory/add" element={<AddInventoryItem />} />
             </Routes>
           </div>
+          <Footer />
         </div>
       </BrowserRouter>
     </>

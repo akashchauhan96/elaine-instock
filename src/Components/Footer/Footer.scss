@@ -1,0 +1,19 @@
+@use "../../styles/partials/colours" as *;
+@use "../../styles/partials/fonts" as *;
+@use "../../styles/partials/mixins" as *;
+
+.footer {
+  display: flex;
+  justify-content: center;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  margin: 2.5rem 0;
+
+  &__copyright {
+    color: $header-colour;
+    font-size: 0.8125rem;
+    line-height: 1rem;
+    font-weight: 400;
+  }
+}
