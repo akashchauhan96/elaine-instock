@@ -191,27 +191,27 @@ export default function NewWarehouse() {
                   <option
                     className="item-details__dropdown-item"
                     label="Accessories"
-                    value="accessories"
+                    value="Accessories"
                   ></option>
                   <option
                     className="item-details__dropdown-item"
                     label="Electronics"
-                    value="electronics"
+                    value="Electronics"
                   ></option>
                   <option
                     className="item-details__dropdown-item"
                     label="Gear"
-                    value="gear"
+                    value="Gear"
                   ></option>
                   <option
                     className="item-details__dropdown-item"
                     label="Health"
-                    value="health"
+                    value="Health"
                   ></option>
                   <option
                     className="item-details__dropdown-item"
                     label="Apparel"
-                    value="apparel"
+                    value="Apparel"
                   ></option>
                 </select>
                 {!isValid && selectedCategory === "" ? (
