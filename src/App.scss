@@ -12,15 +12,24 @@
 
 .main {
   &__background {
-      // FYI - gradient is used to have two colours in the same div, it is not actually going to look gradient. this was the cleanest way to write this code.
-      background: linear-gradient(to bottom, $dark-background-colour 3.25rem, $light-background-colour 0%);
-      height: 100%;
-      width: 100%;
-      padding: 1rem 0;
+    position: relative;
+    min-height: 100vh;
+    // FYI - gradient is used to have two colours in the same div, it is not actually going to look gradient. this was the cleanest way to write this code.
+    background: linear-gradient(
+      to bottom,
+      $dark-background-colour 3.25rem,
+      $light-background-colour 0%
+    );
+    width: 100%;
+    padding: 1rem 0 6rem;
 
     @include tablet {
-      background: linear-gradient(to bottom, $dark-background-colour 6.25rem, $light-background-colour 0%);
-      padding: 0 0 1rem 0;
+      background: linear-gradient(
+        to bottom,
+        $dark-background-colour 6.25rem,
+        $light-background-colour 0%
+      );
+      padding: 0 0 6rem 0;
     }
 
     @include desktop {
