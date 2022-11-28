@@ -28,7 +28,7 @@ export default function EditInventoryForm() {
   const [isValid, setIsValid] = useState(true);
 
   //
-  const [InventoryData, setInventoryData] = useState(null);
+  const [inventoryData, setInventoryData] = useState(null);
 
   // in stock or out of stock
   const [checked, setChecked] = useState("Out of Stock");
@@ -105,14 +105,14 @@ export default function EditInventoryForm() {
     setChecked(event.target.value);
   };
 
-  if (InventoryData) {
-    InventoryData.forEach((warehouse) => {
-      inventoryList.push({
-        id: warehouse.id,
-        label: warehouse.warehouse_name,
-        value: warehouse.id,
-      });
-    });
+  // if (inventoryData) {
+  //   inventoryData.forEach((warehouse) => {
+  //     inventoryList.push({
+  //       id: warehouse.id,
+  //       label: warehouse.warehouse_name,
+  //       value: warehouse.id,
+  //     });
+  //   });
 
     return (
         <>
@@ -383,7 +383,7 @@ export default function EditInventoryForm() {
         </form>
       </>
     );
-  } else {
-    return null;
-  }
+//   } else {
+//     return null;
+//   }
 }
