@@ -16,7 +16,6 @@ function OneInventoryItem() {
       .get(`http://localhost:8080/inventory/${id}`)
       .then((response) => {
         setAxiosCall(response.data);
-        console.log(axiosCall);
       })
       .catch((err) => {
         console.log(

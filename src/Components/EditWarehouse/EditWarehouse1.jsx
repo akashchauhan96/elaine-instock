@@ -71,7 +71,6 @@ export default function EditWarehouse1() {
       updatedWarehouse.contact_position = e.target.position.value;
       updatedWarehouse.contact_phone = e.target.phoneNumber.value;
       updatedWarehouse.contact_email = e.target.email.value;
-      console.log(updatedWarehouse);
       axios
         .put(`http://localhost:8080/warehouse/${id}/`, updatedWarehouse)
         .then(navigate("/warehouses"))

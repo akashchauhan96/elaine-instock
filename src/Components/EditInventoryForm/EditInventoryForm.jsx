@@ -6,44 +6,38 @@ import { URL } from "../../utils/util";
 import "./EditInventoryForm.scss";
 
 export default function EditInventoryForm() {
-
   const { id } = useParams();
-
-  // inventory name
   const [itemName, setItemName] = useState("");
-
-  // inventory description
   const [description, setDescription] = useState("");
-
-  // inventory category
   const [selectedCategory, setSelectedCategory] = useState("");
-
-  // inventory quantity
   const [quantity, setQuantity] = useState(0);
-
-  //
-  const [selectedInventory, setSelectedInventory] = useState("");
-
-  // 
+  const [selectedWarehouse, setSelectedWarehouse] = useState("");
   const [isValid, setIsValid] = useState(true);
-
-  //
-  const [inventoryData, setInventoryData] = useState(null);
-
-  // in stock or out of stock
+  const [warehouseData, setWarehouseData] = useState(null);
   const [checked, setChecked] = useState("Out of Stock");
-
-  // 
   const [missingId, setMissingId] = useState(false);
 
-  let inventoryList = [];
+  let warehouseList = [];
 
-  // GET request to get existing inventory item information
   useEffect(() => {
     axios
+      .get(`${URL}/warehouse`)
+      .then((resp) => {
+        setWarehouseData(resp.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+
+      axios
       .get(`${URL}/inventory/${id}`)
       .then((resp) => {
-        setInventoryData(resp.data);
+        setItemName(resp.data.item_name);
+        setDescription(resp.data.description);
+        setSelectedCategory(resp.data.category);
+        setQuantity(resp.data.quantity);
+        setSelectedWarehouse(resp.data.warehouse_id);
+        setChecked(resp.data.status);
       })
       .catch((err) => {
         console.log(err);
@@ -52,36 +46,39 @@ export default function EditInventoryForm() {
 
   const navigate = useNavigate();
 
-  // PUT request to send edited inventory item information to backend
   const handleOnSubmit = (e) => {
     e.preventDefault();
-    const editInventory = {};
+    const newInventory = {};
     if (
       !itemName ||
       !description ||
       (!isChecked("Out of Stock") && !quantity) ||
       (isChecked("In Stock") && isNaN(quantity)) ||
-      !selectedInventory ||
+      !selectedWarehouse ||
       !selectedCategory
     ) {
       setIsValid(false);
       return;
     } else {
       if (e.target.status.value === "Out of Stock") {
-        editInventory.quantity = 0;
-      } else {
-        editInventory.quantity = e.target.quantity.value;
+        newInventory.quantity = 0;
       }
-      editInventory.item_name = e.target.itemName.value;
-      editInventory.description = e.target.description.value;
-      editInventory.category = e.target.category.value;
-      editInventory.status = e.target.status.value;
+      else if (e.target.status.value === "In Stock" && e.target.quantity === 0) {
+        newInventory.status = "Out of Stock";
+      }
+      else {
+        newInventory.quantity = e.target.quantity.value;
+      }
+      newInventory.item_name = e.target.itemName.value;
+      newInventory.description = e.target.description.value;
+      newInventory.category = e.target.category.value;
+      newInventory.status = e.target.status.value;
 
-      editInventory.warehouse_id = e.target.warehouseId.value;
+      newInventory.warehouse_id = e.target.warehouseId.value;
       setIsValid(true);
 
       axios
-        .put(`${URL}/inventory`, editInventory)
+        .put(`${URL}/inventory/${id}`, newInventory)
         .then(() => {
           navigate(`/inventory`);
         })
@@ -105,18 +102,18 @@ export default function EditInventoryForm() {
     setChecked(event.target.value);
   };
 
-  // if (inventoryData) {
-  //   inventoryData.forEach((warehouse) => {
-  //     inventoryList.push({
-  //       id: warehouse.id,
-  //       label: warehouse.warehouse_name,
-  //       value: warehouse.id,
-  //     });
-  //   });
+  if (warehouseData) {
+    warehouseData.forEach((warehouse) => {
+      warehouseList.push({
+        id: warehouse.id,
+        label: warehouse.warehouse_name,
+        value: warehouse.id,
+      });
+    });
 
     return (
         <>
-        <form className="form" onSubmit={handleOnSubmit}>
+               <form className="form" onSubmit={handleOnSubmit}>
           <div className="form__sections">
             <div className="item-details">
               <h2 className="item-details__title">Item Details</h2>
@@ -202,27 +199,27 @@ export default function EditInventoryForm() {
                   <option
                     className="item-details__dropdown-item"
                     label="Accessories"
-                    value="accessories"
+                    value="Accessories"
                   ></option>
                   <option
                     className="item-details__dropdown-item"
                     label="Electronics"
-                    value="electronics"
+                    value="Electronics"
                   ></option>
                   <option
                     className="item-details__dropdown-item"
                     label="Gear"
-                    value="gear"
+                    value="Gear"
                   ></option>
                   <option
                     className="item-details__dropdown-item"
                     label="Health"
-                    value="health"
+                    value="Health"
                   ></option>
                   <option
                     className="item-details__dropdown-item"
                     label="Apparel"
-                    value="apparel"
+                    value="Apparel"
                   ></option>
                 </select>
                 {!isValid && selectedCategory === "" ? (
@@ -313,13 +310,13 @@ export default function EditInventoryForm() {
               <div className="item-availability__wrapper">
                 <label className="item-availability__label">Warehouse</label>
                 <select
-                  value={selectedInventory}
+                  value={selectedWarehouse}
                   className={`item-availability__dropdown-menu ${
-                    !isValid && selectedInventory === ""
+                    !isValid && selectedWarehouse === ""
                       ? "item-availability__dropdown-menu--error"
                       : ""
                   }`}
-                  onChange={(e) => setSelectedInventory(e.target.value)}
+                  onChange={(e) => setSelectedWarehouse(e.target.value)}
                   name="warehouseId"
                 >
                   <option
@@ -328,7 +325,7 @@ export default function EditInventoryForm() {
                     label="Please Select"
                     value="none"
                   ></option>
-                  {inventoryList.map((warehouse) => (
+                  {warehouseList.map((warehouse) => (
                     <option
                       className="item-availability__dropdown-item"
                       value={warehouse.value.toLowerCase()}
@@ -339,7 +336,7 @@ export default function EditInventoryForm() {
                     </option>
                   ))}
                 </select>
-                {!isValid && selectedInventory === "" ? (
+                {!isValid && selectedWarehouse === "" ? (
                   <div className="item-availability__error-state">
                     <img
                       src={error}
@@ -377,13 +374,13 @@ export default function EditInventoryForm() {
               Cancel
             </button>
             <button className="buttons__add-item" type="submit">
-              + Add Item
+              Edit Item
             </button>
           </div>
         </form>
       </>
     );
-//   } else {
-//     return null;
-//   }
+  } else {
+    return null;
+  }
 }
