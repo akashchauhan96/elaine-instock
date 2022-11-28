@@ -24,7 +24,6 @@ export default function NewWarehouse() {
 
   const handleOnSubmit = (e) => {
     e.preventDefault();
-
     //Form validation upon submit
     if (
       isEmpty(warehouseName, { ignore_whitespace: true }) ||
