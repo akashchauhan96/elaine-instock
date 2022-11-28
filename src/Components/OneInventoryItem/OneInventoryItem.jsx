@@ -23,7 +23,7 @@ function OneInventoryItem() {
           `An error occured while trying to access the inventory: ${err}`
         );
       });
-  }, [id]);
+  });
   if (!axiosCall) {
     return <p>loading</p>;
   }
@@ -36,6 +36,7 @@ function OneInventoryItem() {
             <img
               src={BackArrow}
               alt="back arrow"
+              className="inventory-item__back"
               onClick={() => navigate("/inventory")}
             />
             <h1>{axiosCall.item_name}</h1>
@@ -67,11 +68,19 @@ function OneInventoryItem() {
             <div className="inventory-item__status-1">
               <div className="inventory-item__details-item">
                 <h4 className="inventory-item__subtitle">Status:</h4>
-                <p>{axiosCall.status}</p>
+                <p
+                  className={`inventory-item__details-item ${
+                    axiosCall.status === "In Stock"
+                      ? "inventory-item__details-item--inStock"
+                      : "inventory-item__details-item--outOfStock"
+                  }`}
+                >
+                  {axiosCall.status}
+                </p>
               </div>
               <div className="inventory-item__details-item">
                 <h4 className="inventory-item__subtitle">Warehouse:</h4>
-                <p>{axiosCall.warehouse_id}</p>
+                <p>{axiosCall.warehouse_name}</p>
               </div>
             </div>
             <div className="inventory-item__status-2">
