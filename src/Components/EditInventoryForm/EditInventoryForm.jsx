@@ -1,66 +1,87 @@
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import error from "../../assets/icons/error-24px.svg";
 import axios from "axios";
 import { URL } from "../../utils/util";
 import "./EditInventoryForm.scss";
 
-export default function NewWarehouse() {
+export default function EditInventoryForm() {
 
+  const { id } = useParams();
+
+  // inventory name
   const [itemName, setItemName] = useState("");
+
+  // inventory description
   const [description, setDescription] = useState("");
+
+  // inventory category
   const [selectedCategory, setSelectedCategory] = useState("");
+
+  // inventory quantity
   const [quantity, setQuantity] = useState(0);
-  const [selectedWarehouse, setSelectedWarehouse] = useState("");
+
+  //
+  const [selectedInventory, setSelectedInventory] = useState("");
+
+  // 
   const [isValid, setIsValid] = useState(true);
-  const [warehouseData, setWarehouseData] = useState(null);
+
+  //
+  const [InventoryData, setInventoryData] = useState(null);
+
+  // in stock or out of stock
   const [checked, setChecked] = useState("Out of Stock");
+
+  // 
   const [missingId, setMissingId] = useState(false);
 
-  let warehouseList = [];
+  let inventoryList = [];
 
+  // GET request to get existing inventory item information
   useEffect(() => {
     axios
-      .get(`${URL}/warehouse`)
+      .get(`${URL}/inventory/${id}`)
       .then((resp) => {
-        setWarehouseData(resp.data);
+        setInventoryData(resp.data);
       })
       .catch((err) => {
         console.log(err);
       });
-  }, []);
+  }, [id]);
 
   const navigate = useNavigate();
 
+  // PUT request to send edited inventory item information to backend
   const handleOnSubmit = (e) => {
     e.preventDefault();
-    const newInventory = {};
+    const editInventory = {};
     if (
       !itemName ||
       !description ||
       (!isChecked("Out of Stock") && !quantity) ||
       (isChecked("In Stock") && isNaN(quantity)) ||
-      !selectedWarehouse ||
+      !selectedInventory ||
       !selectedCategory
     ) {
       setIsValid(false);
       return;
     } else {
       if (e.target.status.value === "Out of Stock") {
-        newInventory.quantity = 0;
+        editInventory.quantity = 0;
       } else {
-        newInventory.quantity = e.target.quantity.value;
+        editInventory.quantity = e.target.quantity.value;
       }
-      newInventory.item_name = e.target.itemName.value;
-      newInventory.description = e.target.description.value;
-      newInventory.category = e.target.category.value;
-      newInventory.status = e.target.status.value;
+      editInventory.item_name = e.target.itemName.value;
+      editInventory.description = e.target.description.value;
+      editInventory.category = e.target.category.value;
+      editInventory.status = e.target.status.value;
 
-      newInventory.warehouse_id = e.target.warehouseId.value;
+      editInventory.warehouse_id = e.target.warehouseId.value;
       setIsValid(true);
 
       axios
-        .post(`${URL}/inventory`, newInventory)
+        .put(`${URL}/inventory`, editInventory)
         .then(() => {
           navigate(`/inventory`);
         })
@@ -84,9 +105,9 @@ export default function NewWarehouse() {
     setChecked(event.target.value);
   };
 
-  if (warehouseData) {
-    warehouseData.forEach((warehouse) => {
-      warehouseList.push({
+  if (InventoryData) {
+    InventoryData.forEach((warehouse) => {
+      inventoryList.push({
         id: warehouse.id,
         label: warehouse.warehouse_name,
         value: warehouse.id,
@@ -292,13 +313,13 @@ export default function NewWarehouse() {
               <div className="item-availability__wrapper">
                 <label className="item-availability__label">Warehouse</label>
                 <select
-                  value={selectedWarehouse}
+                  value={selectedInventory}
                   className={`item-availability__dropdown-menu ${
-                    !isValid && selectedWarehouse === ""
+                    !isValid && selectedInventory === ""
                       ? "item-availability__dropdown-menu--error"
                       : ""
                   }`}
-                  onChange={(e) => setSelectedWarehouse(e.target.value)}
+                  onChange={(e) => setSelectedInventory(e.target.value)}
                   name="warehouseId"
                 >
                   <option
@@ -307,7 +328,7 @@ export default function NewWarehouse() {
                     label="Please Select"
                     value="none"
                   ></option>
-                  {warehouseList.map((warehouse) => (
+                  {inventoryList.map((warehouse) => (
                     <option
                       className="item-availability__dropdown-item"
                       value={warehouse.value.toLowerCase()}
@@ -318,7 +339,7 @@ export default function NewWarehouse() {
                     </option>
                   ))}
                 </select>
-                {!isValid && selectedWarehouse === "" ? (
+                {!isValid && selectedInventory === "" ? (
                   <div className="item-availability__error-state">
                     <img
                       src={error}
