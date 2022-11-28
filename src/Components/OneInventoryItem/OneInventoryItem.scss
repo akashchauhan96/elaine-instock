@@ -1,0 +1,54 @@
+@use "../../styles/partials/colours" as *;
+@use "../../styles/partials/fonts" as *;
+@use "../../styles/partials/mixins" as *;
+
+.inventory-item {
+  padding: 1rem;
+  &__header-wrapper {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 2rem;
+  }
+  &__title-wrapper {
+    display: flex;
+  }
+
+  &__edit-wrapper {
+    display: flex;
+    background-color: $button-colour;
+    width: 15%;
+    border-radius: 50px;
+    justify-content: center;
+  }
+
+  &__edit {
+    color: $light-text-colour;
+    display: none;
+  }
+
+  &__edit-icon {
+    width: 1.5rem;
+  }
+
+  &__subtitle {
+    color: $header-colour;
+    font-size: 0.8rem;
+  }
+
+  &__description {
+    margin-bottom: 2rem;
+  }
+
+  &__status-wrapper {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__details-item {
+    margin-bottom: 1rem;
+  }
+
+  &__text {
+    font-size: 0.7rem;
+  }
+}
