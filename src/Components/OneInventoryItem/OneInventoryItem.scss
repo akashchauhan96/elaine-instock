@@ -1,0 +1,156 @@
+@use "../../styles/partials/colours" as *;
+@use "../../styles/partials/fonts" as *;
+@use "../../styles/partials/mixins" as *;
+
+.inventory-item {
+  &__header-wrapper {
+    display: flex;
+    justify-content: space-between;
+    padding: 0rem 1rem 1.5rem 1rem;
+    margin-bottom: 1rem;
+    border-bottom: 1px solid $accent-colour;
+
+    @include tablet {
+      padding: 0rem 2rem 1.4rem 2rem;
+    }
+
+    @include desktop {
+      padding: 0rem 2rem 2.15rem 2rem;
+    }
+  }
+  &__title-wrapper {
+    display: flex;
+  }
+  &__back {
+    cursor: pointer;
+    margin-right: 0.3rem;
+  }
+
+  &__edit-wrapper {
+    display: flex;
+    background-color: $button-colour;
+    width: 15%;
+    border-radius: 50px;
+    justify-content: center;
+    cursor: pointer;
+
+    @include tablet {
+      gap: 0.5rem;
+    }
+
+    @include desktop {
+      width: 10%;
+    }
+  }
+
+  &__edit {
+    color: $light-text-colour;
+    display: none;
+
+    @include tablet {
+      display: block;
+      font-size: 1rem;
+      font-weight: 600;
+    }
+  }
+
+  &__edit-icon {
+    width: 1.5rem;
+
+    @include tablet {
+      width: 1.2em;
+    }
+  }
+
+  &__subtitle {
+    color: $header-colour;
+    font-size: 0.8rem;
+    margin-bottom: 0.5rem;
+  }
+
+  &__description {
+    margin-bottom: 2rem;
+
+    @include tablet {
+      border-right: 1px solid $accent-colour;
+      padding-right: 2.5rem;
+    }
+
+    @include desktop {
+      padding-right: 4rem;
+    }
+  }
+
+  &__status-wrapper {
+    display: flex;
+    gap: 4rem;
+
+    @include tablet {
+      width: 50%;
+      margin-left: 2.5rem;
+      justify-content: start;
+      gap: 5rem;
+    }
+
+    @include desktop {
+      margin-left: 4rem;
+      gap: 10rem;
+    }
+  }
+
+  &__details-item {
+    margin-bottom: 1.5rem;
+
+    &--inStock {
+      font-size: 0.6875rem;
+      line-height: 1rem;
+      font-weight: 600;
+      background-color: rgba(21, 132, 99, 0.07);
+      color: $instock-colour;
+      font-weight: 700;
+      height: 1.5rem;
+      padding: 0.25rem 0.5rem;
+      width: fit-content;
+      border-radius: 1.25rem;
+      text-transform: uppercase;
+    }
+
+    &--outOfStock {
+      font-size: 0.6875rem;
+      line-height: 1rem;
+      font-weight: 600;
+      background-color: rgba(201, 69, 21, 0.07);
+      color: $no-stock-colour;
+      font-weight: 700;
+      height: 1.5rem;
+      padding: 0.25rem 0.5rem;
+      width: fit-content;
+      border-radius: 1.25rem;
+      text-transform: uppercase;
+    }
+
+    @include tablet {
+      margin-bottom: 2.5rem;
+    }
+  }
+
+  &__text {
+    font-size: 0.7rem;
+
+    @include tablet {
+      font-size: 0.85rem;
+    }
+
+    @include desktop {
+      font-size: 0.75rem;
+    }
+  }
+
+  &__details {
+    padding: 1rem;
+    @include tablet {
+      display: flex;
+      padding: 2rem;
+    }
+  }
+}
