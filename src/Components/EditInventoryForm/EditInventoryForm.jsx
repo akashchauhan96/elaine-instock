@@ -90,6 +90,8 @@ export default function EditInventoryForm() {
             setMissingId(true);
           }
         });
+
+        navigate('/inventory')
     }
   };
 
@@ -321,7 +323,6 @@ export default function EditInventoryForm() {
                   <option
                     hidden
                     className="item-details__dropdown-item"
-                    label="Please Select"
                     value="none"
                   ></option>
                   {warehouseList.map((warehouse) => (
