@@ -78,9 +78,9 @@ export default function EditInventoryForm() {
 
       axios
         .put(`${URL}/inventory/${id}`, newInventory)
-        .then(() => {
-          navigate(`/inventory`);
-        })
+        .then(
+          () => {navigate("/inventory")}
+        )
         .catch((err) => {
           console.log(err.response.data);
           if (
@@ -91,7 +91,6 @@ export default function EditInventoryForm() {
           }
         });
 
-        navigate('/inventory')
     }
   };
 
