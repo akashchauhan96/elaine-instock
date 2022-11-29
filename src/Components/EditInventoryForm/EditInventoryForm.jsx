@@ -78,9 +78,9 @@ export default function EditInventoryForm() {
 
       axios
         .put(`${URL}/inventory/${id}`, newInventory)
-        .then(() => {
-          navigate(`/inventory`);
-        })
+        .then(
+          () => {navigate("/inventory")}
+        )
         .catch((err) => {
           console.log(err.response.data);
           if (
@@ -90,6 +90,7 @@ export default function EditInventoryForm() {
             setMissingId(true);
           }
         });
+
     }
   };
 
@@ -321,7 +322,6 @@ export default function EditInventoryForm() {
                   <option
                     hidden
                     className="item-details__dropdown-item"
-                    label="Please Select"
                     value="none"
                   ></option>
                   {warehouseList.map((warehouse) => (
