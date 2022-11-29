@@ -14,7 +14,7 @@ export default function EditInventoryForm() {
   const [selectedWarehouse, setSelectedWarehouse] = useState("");
   const [isValid, setIsValid] = useState(true);
   const [warehouseData, setWarehouseData] = useState(null);
-  const [checked, setChecked] = useState("Out of Stock");
+  const [checked, setChecked] = useState("");
   const [missingId, setMissingId] = useState(false);
 
   let warehouseList = [];
@@ -53,6 +53,7 @@ export default function EditInventoryForm() {
       !itemName ||
       !description ||
       (!isChecked("Out of Stock") && !quantity) ||
+      ((e.target.status.value === "In Stock") && (quantity === "0")) ||
       (isChecked("In Stock") && isNaN(quantity)) ||
       !selectedWarehouse ||
       !selectedCategory
@@ -63,7 +64,7 @@ export default function EditInventoryForm() {
       if (e.target.status.value === "Out of Stock") {
         newInventory.quantity = 0;
       }
-      else if (e.target.status.value === "In Stock" && e.target.quantity === 0) {
+      else if (isChecked("In Stock") && quantity === 0) {
         newInventory.status = "Out of Stock";
       }
       else {
