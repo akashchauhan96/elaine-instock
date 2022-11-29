@@ -17,22 +17,22 @@
     }
 
     &:nth-last-child(1) {
-        
+
         @include tablet {
-        border: none;
+            border: none;
         }
     }
 
     &:hover {
         background-color: rgba(46, 102, 229, 0.07);
-    
+
     }
 
     // For last element in the table
     &--noBorder {
 
-        @include tablet{
-              border: none;
+        @include tablet {
+            border: none;
         }
     }
 
@@ -46,7 +46,7 @@
 
         //Modifiers to give more granular control over container widths
         &--first {
-            @include tablet{
+            @include tablet {
                 width: 45%;
             }
 
@@ -78,6 +78,7 @@
             @include tablet {
                 width: 70%;
             }
+
             @include desktop {
                 width: 49%;
             }
@@ -88,6 +89,7 @@
             @include tablet {
                 width: 51%;
             }
+
             @include desktop {
                 width: 51%;
             }
@@ -97,6 +99,7 @@
             @include tablet {
                 width: 95%;
             }
+
             @include desktop {
                 width: 44%;
             }
@@ -109,6 +112,7 @@
                 margin: 0;
                 width: 53.5%;
             }
+
             @include desktop {
                 width: 56%;
             }
@@ -135,7 +139,7 @@
 
         &:hover {
             text-decoration: underline;
-        
+
         }
     }
 
@@ -182,18 +186,42 @@
     }
 
     &__no-stock {
-        color: $no-stock-colour;
+        font-size: 0.6875rem;
+        line-height: 1rem;
+        font-weight: 600;
         background-color: rgba(201, 69, 21, 0.07);
-        width: 6.9rem;
-        padding-left: 0.75rem;
-        border-radius: 1rem;
+        color: $no-stock-colour;
+        font-weight: 700;
+        height: 1.5rem;
+        padding: 0.25rem 0.5rem;
+        width: fit-content;
+        border-radius: 1.25rem;
+        text-transform: uppercase;
+
+        @include tablet {
+            font-size: 0.75rem;
+            line-height: 1.125rem;
+            height: 1.625rem;
+        }
     }
 
     &__in-stock {
+        font-size: 0.6875rem;
+        line-height: 1rem;
+        font-weight: 600;
+        background-color: rgba(21, 132, 99, 0.07);
         color: $instock-colour;
-        background-color: rgba(1, 132, 99,0.07);
-        width: 5.05rem;
-        padding-left: 0.75rem;
-        border-radius: 1rem;
+        font-weight: 700;
+        height: 1.5rem;
+        padding: 0.25rem 0.5rem;
+        width: fit-content;
+        border-radius: 1.25rem;
+        text-transform: uppercase;
+
+        @include tablet {
+            font-size: 0.75rem;
+            line-height: 1.125rem;
+            height: 1.625rem;
+        }
     }
 }

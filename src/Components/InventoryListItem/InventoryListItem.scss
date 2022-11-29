@@ -232,5 +232,9 @@
         &:hover {
             cursor: pointer;
         }
+
+        &--edit {
+            padding-top: 0.25rem;
+        }
     }
 }

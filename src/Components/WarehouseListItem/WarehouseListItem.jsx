@@ -63,7 +63,7 @@ function WarehouseListItem({
         />
         <Link to={`/warehouses/${warehouse.id}/edit`}>
           <img
-            className="warehouseListItem__icon"
+            className="warehouseListItem__icon warehouseListItem__icon--edit"
             src={editIcon}
             alt="Edit Icon"
           />
