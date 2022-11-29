@@ -70,6 +70,7 @@
       @include tablet {
         width: 58.5%;
       }
+
       @include desktop {
         width: 49%;
       }
@@ -79,6 +80,7 @@
       @include tablet {
         width: 41.5%;
       }
+
       @include desktop {
         width: 51%;
       }
@@ -88,6 +90,7 @@
       @include tablet {
         width: 39%;
       }
+
       @include desktop {
         width: 44%;
       }
@@ -97,6 +100,7 @@
       @include tablet {
         width: 61%;
       }
+
       @include desktop {
         width: 56%;
       }
@@ -131,18 +135,18 @@
     padding-top: 0.2rem;
     margin-right: 0.25rem;
   }
-  
-    &__img {
-        @include tablet {
-            padding-top: 0.15rem;
-        }
-    }
 
-    &__detail {
-        font-size: .8125rem;
-        color: $global-text-colour;
-        padding-right: 1rem;
-        line-height: 1.25rem;
+  &__img {
+    @include tablet {
+      padding-top: 0.15rem;
+    }
+  }
+
+  &__detail {
+    font-size: .8125rem;
+    color: $global-text-colour;
+    padding-right: 1rem;
+    line-height: 1.25rem;
 
     @include tablet {
       line-height: 1.375rem;
@@ -171,6 +175,14 @@
 
     @include tablet {
       margin-left: 1rem;
+    }
+
+    &:hover {
+      cursor: pointer;
+    }
+
+    &--edit {
+      padding-top: 0.25rem;
     }
   }
 }

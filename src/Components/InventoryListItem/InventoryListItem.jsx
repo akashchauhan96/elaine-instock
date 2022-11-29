@@ -50,7 +50,7 @@ function InventoryListItem({ inventory, isLastInventory, isDeleted, setIsDeleted
                     setOpenModal(true);
                 }} src={deleteIcon} alt='Delete Icon' />
                 <Link to={`/inventory/${inventory.id}/edit`}>
-                    <img className='inventoryListItem__icon' src={editIcon} alt='Edit Icon' />
+                    <img className='inventoryListItem__icon inventoryListItem__icon--edit' src={editIcon} alt='Edit Icon' />
                 </Link>
             </div>
             {openModal && (

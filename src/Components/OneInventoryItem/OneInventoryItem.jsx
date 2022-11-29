@@ -58,9 +58,9 @@ function OneInventoryItem() {
               <h4 className="inventory-item__subtitle">ITEM DESCRIPTION</h4>
               <p className="inventory-item__text">{axiosCall.description}</p>
             </div>
-            <div className="inventory-item__details-item">
+            <div className="inventory-item__details-item--bottom">
               <h4 className="inventory-item__subtitle">CATEGORY:</h4>
-              <p>{axiosCall.category}</p>
+              <p className="inventory-item__text">{axiosCall.category}</p>
             </div>
           </div>
           <div className="inventory-item__status-wrapper">
@@ -68,7 +68,7 @@ function OneInventoryItem() {
               <div className="inventory-item__details-item">
                 <h4 className="inventory-item__subtitle">Status:</h4>
                 <p
-                  className={`inventory-item__details-item ${
+                  className={`inventory-item__details-item--bottom ${
                     axiosCall.status === "In Stock"
                       ? "inventory-item__details-item--inStock"
                       : "inventory-item__details-item--outOfStock"
@@ -79,12 +79,12 @@ function OneInventoryItem() {
               </div>
               <div className="inventory-item__details-item">
                 <h4 className="inventory-item__subtitle">Warehouse:</h4>
-                <p>{axiosCall.warehouse_name}</p>
+                <p className="inventory-item__text">{axiosCall.warehouse_name}</p>
               </div>
             </div>
             <div className="inventory-item__status-2">
               <h4 className="inventory-item__subtitle">Quantity:</h4>
-              <p>{axiosCall.quantity}</p>
+              <p className="inventory-item__text">{axiosCall.quantity}</p>
             </div>
           </div>
         </section>
