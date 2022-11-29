@@ -237,11 +237,11 @@
     display: block;
     width: 100%;
     border-radius: 5rem;
-    border: 1px solid $accent-colour;
     background-color: $button-colour;
     color: $light-text-colour;
     font-weight: 600;
     cursor: pointer;
+    border: none;
 
     &:hover {
       background-color: $dark-background-colour;
