@@ -288,7 +288,7 @@ export default function EditInventoryForm() {
                   />
                   {(!isValid && isNaN(quantity)) ||
                   (!isValid && !quantity) ||
-                  (!isValid && quantity.charAt(0) === "0") ? (
+                  (!isValid && quantity.toString().charAt(0) === "0") ? (
                     <div className="item-availability__error-state">
                       <img
                         src={error}
@@ -373,7 +373,7 @@ export default function EditInventoryForm() {
               Cancel
             </button>
             <button className="buttons__add-item" type="submit">
-              Edit Item
+              Save
             </button>
           </div>
         </form>
