@@ -29,7 +29,7 @@ export default function EditInventoryForm() {
         console.log(err);
       });
 
-      axios
+    axios
       .get(`${URL}/inventory/${id}`)
       .then((resp) => {
         setItemName(resp.data.item_name);
