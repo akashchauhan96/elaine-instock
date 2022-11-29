@@ -92,6 +92,8 @@ export default function EditInventoryForm() {
             setMissingId(true);
           }
         });
+
+        navigate('/inventory')
     }
   };
 
