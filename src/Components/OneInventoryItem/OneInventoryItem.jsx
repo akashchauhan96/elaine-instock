@@ -2,7 +2,7 @@ import "./OneInventoryItem.scss";
 import EditIcon from "../../assets/icons/edit-white-24px.svg";
 import BackArrow from "../../assets/icons/arrow_back-24px.svg";
 import { useNavigate } from "react-router-dom";
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import axios from "axios";
 import { useState, useEffect } from "react";
 import React from "react";
@@ -16,7 +16,6 @@ function OneInventoryItem() {
       .get(`http://localhost:8080/inventory/${id}`)
       .then((response) => {
         setAxiosCall(response.data);
-        console.log(axiosCall);
       })
       .catch((err) => {
         console.log(
@@ -41,9 +40,9 @@ function OneInventoryItem() {
             />
             <h1>{axiosCall.item_name}</h1>
           </div>
-          <div
-            className="inventory-item__edit-wrapper"
-            onClick={() => navigate("/inventory/:id/edit")}
+          <Link
+          className="inventory-item__edit-wrapper"
+          to={`/inventory/${id}/edit`}
           >
             <img
               src={EditIcon}
@@ -51,7 +50,7 @@ function OneInventoryItem() {
               className="inventory-item__edit-icon"
             />
             <h2 className="inventory-item__edit">Edit</h2>
-          </div>
+          </ Link>
         </section>
         <section className="inventory-item__details">
           <div className="inventory-item__description">
