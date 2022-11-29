@@ -29,7 +29,7 @@ export default function EditInventoryForm() {
         console.log(err);
       });
 
-      axios
+    axios
       .get(`${URL}/inventory/${id}`)
       .then((resp) => {
         setItemName(resp.data.item_name);
@@ -53,7 +53,7 @@ export default function EditInventoryForm() {
       !itemName ||
       !description ||
       (!isChecked("Out of Stock") && !quantity) ||
-      ((e.target.status.value === "In Stock") && (quantity === "0")) ||
+      (e.target.status.value === "In Stock" && quantity === "0") ||
       (isChecked("In Stock") && isNaN(quantity)) ||
       !selectedWarehouse ||
       !selectedCategory
@@ -63,11 +63,9 @@ export default function EditInventoryForm() {
     } else {
       if (e.target.status.value === "Out of Stock") {
         newInventory.quantity = 0;
-      }
-      else if (isChecked("In Stock") && quantity === 0) {
+      } else if (isChecked("In Stock") && quantity === 0) {
         newInventory.status = "Out of Stock";
-      }
-      else {
+      } else {
         newInventory.quantity = e.target.quantity.value;
       }
       newInventory.item_name = e.target.itemName.value;
@@ -113,8 +111,8 @@ export default function EditInventoryForm() {
     });
 
     return (
-        <>
-               <form className="form" onSubmit={handleOnSubmit}>
+      <>
+        <form className="form" onSubmit={handleOnSubmit}>
           <div className="form__sections">
             <div className="item-details">
               <h2 className="item-details__title">Item Details</h2>

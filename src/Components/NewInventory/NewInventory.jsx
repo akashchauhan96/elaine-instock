@@ -96,7 +96,7 @@ export default function NewWarehouse() {
     return (
       <>
         <div className="new-inventory__title-wrapper">
-          <Link to="/" className="new-inventory__back-link">
+          <Link to="/inventory" className="new-inventory__back-link">
             <img
               className="new-inventory__back-button"
               src={arrowBack}
