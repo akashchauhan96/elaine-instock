@@ -5,6 +5,7 @@ import "./NewWarehouse.scss";
 import { isEmail, isMobilePhone, isEmpty } from "validator";
 import error from "../../assets/icons/error-24px.svg";
 import axios from "axios";
+import { URL } from "../../utils/util";
 
 export default function NewWarehouse() {
   const [warehouseName, setWarehouseName] = useState("");
@@ -63,7 +64,7 @@ export default function NewWarehouse() {
       console.log(newWarehouse);
 
       axios
-        .post(`http://localhost:8080/warehouse`, newWarehouse)
+        .post(`${URL}/warehouse`, newWarehouse)
         .then(() => {
           navigate(`/`);
         })

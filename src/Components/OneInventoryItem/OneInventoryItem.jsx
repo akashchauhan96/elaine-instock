@@ -6,6 +6,7 @@ import { useParams, Link } from "react-router-dom";
 import axios from "axios";
 import { useState, useEffect } from "react";
 import React from "react";
+import { URL } from "../../utils/util";
 
 function OneInventoryItem() {
   const navigate = useNavigate();
@@ -13,7 +14,7 @@ function OneInventoryItem() {
   const [axiosCall, setAxiosCall] = useState(null);
   useEffect(() => {
     axios
-      .get(`http://localhost:8080/inventory/${id}`)
+      .get(`${URL}/inventory/${id}`)
       .then((response) => {
         setAxiosCall(response.data);
       })
@@ -41,8 +42,8 @@ function OneInventoryItem() {
             <h1>{axiosCall.item_name}</h1>
           </div>
           <Link
-          className="inventory-item__edit-wrapper"
-          to={`/inventory/${id}/edit`}
+            className="inventory-item__edit-wrapper"
+            to={`/inventory/${id}/edit`}
           >
             <img
               src={EditIcon}
@@ -50,7 +51,7 @@ function OneInventoryItem() {
               className="inventory-item__edit-icon"
             />
             <h2 className="inventory-item__edit">Edit</h2>
-          </ Link>
+          </Link>
         </section>
         <section className="inventory-item__details">
           <div className="inventory-item__description">
@@ -79,7 +80,9 @@ function OneInventoryItem() {
               </div>
               <div className="inventory-item__details-item">
                 <h4 className="inventory-item__subtitle">Warehouse:</h4>
-                <p className="inventory-item__text">{axiosCall.warehouse_name}</p>
+                <p className="inventory-item__text">
+                  {axiosCall.warehouse_name}
+                </p>
               </div>
             </div>
             <div className="inventory-item__status-2">

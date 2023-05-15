@@ -1,10 +1,10 @@
 import "./DeleteWH.scss";
 import CloseIcon from "../../assets/icons/close-24px.svg";
 import axios from "axios";
+import { URL } from "../../utils/util";
 
 function DeleteWH({ setOpenModal, warehouse, setIsDeleted, isDeleted }) {
-  const urlWarehouse = `http://localhost:8080/warehouse/${warehouse.id}`;
-
+  const urlWarehouse = `${URL}/warehouse/${warehouse.id}`;
 
   const handleDeleteWarehouse = (event) => {
     axios

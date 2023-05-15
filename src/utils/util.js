@@ -1,5 +1,3 @@
-const PORT = 8080;
+const URL = `https://instock-backend.up.railway.app`;
 
-const URL =`http://localhost:${PORT}`;
-
-export {URL};
+export { URL };
