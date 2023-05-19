@@ -19,7 +19,7 @@ export default function EditWarehouse1() {
 
   useEffect(() => {
     axios
-      .get(`${URL}/${id}`)
+      .get(`${URL}/warehouses/${id}`)
       .then((response) => {
         setAxiosCall(response.data);
         setPhoneNumber(response.data.contact_phone);
